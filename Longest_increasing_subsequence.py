@@ -88,7 +88,7 @@
 
 # *Whiteboarding solution
 
-def longest_increasing(nums):
+def longest_increasing (nums):
     if not nums:
         return 0
     if (len(nums) == 1):
@@ -96,27 +96,24 @@ def longest_increasing(nums):
 
     i = 0
     j = 0
-    n = 0
     max_size = 0
 
     while (j < len(nums)):
-        j += 1
+        j+=1
+        max_size = max (max_size, j-i)
 
-        max_size = max(max_size, j-i)
-
-
-
-        if (j < len(nums) and nums[j] <= nums[j-1]):
+        if (j < len(nums) and nums[j] < nums[j-1]):
             i = j
 
-    return max_size, n
+    return max_size
 
 
-nums = [2,2,2,2,2]
+
+
+
+nums = [1, 2, 3, 0, 2, 4, 5, 6, 7, 8, 9, 10,  3]
 
 result = longest_increasing(nums)
-
-
 
 print(f"The longest increasing subarray is {result} indices long")
 
