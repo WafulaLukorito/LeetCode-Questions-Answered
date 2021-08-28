@@ -37,5 +37,9 @@ for num in nums:
     if num == 0:
         j+=1
     else:
-        nums[k] == num
-        
+        nums[k] = num
+        k+=1
+    for i in range (n - j, n):
+        nums[i] = 0
+
+print (nums)

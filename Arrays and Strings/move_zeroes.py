@@ -41,18 +41,37 @@
 
 #*Whiteboarding attempt 
 
-nums = [0,2,3,0,7,5,0,9,0]
+# nums = [0,2,3,0,7,5,0,9,0]
 
-n = len (nums)
+# n = len (nums)
+
+# j = 0
+
+# for num in nums:
+#     if (num!=0):
+#         nums[j]= num
+#         j+=1
+
+# for i in range (j, n):
+#     nums[i] = 0
+
+# print (nums)
+
+#*Attempt after a week
+
+nums = [1, 0,2,3,0,7,5,0,9,0,7,0,0, 9]
+
 
 j = 0
+k = 0 
 
 for num in nums:
-    if (num!=0):
-        nums[j]= num
+    if num == 0:
         j+=1
-
-for i in range (j, n):
+    else:
+        nums[k] = num
+        k+=1
+for i in range (len(nums) - j, len(nums)):
     nums[i] = 0
 
 print (nums)
