@@ -1,0 +1,97 @@
+
+"""Count the number of prime numbers less than a non-negative number, n.
+    
+    #? note on 3rd argument in range (step):Depending on how many arguments user is passing to the function, user can decide where that series of numbers will begin and end as well as how big the difference will be between one number and the next.range() takes mainly three arguments.
+
+    #? In boolean array, True is equal to 1, False equals zero. Hence, to find number of trues, return sum of boolean array
+
+    #? Use Sieve of Eratosthenes
+
+    """
+
+# import math
+
+# def count_primes(n):
+#     if (n<2):
+#         return 0
+#     is_prime = [True] * n
+#     is_prime[0] = is_prime[1] = False
+    
+#     for i in range(2, int(math.ceil(math.sqrt(n)))):
+#         if (is_prime[i]):
+#             for  multiples_of_i in range (i*i, n, i):
+#                 is_prime[multiples_of_i] = False
+#     return sum(is_prime)
+
+
+
+#*Second Attempt
+
+# import math
+
+# def count_primes(n):
+#     if (n < 2):
+#         return 0
+#     is_prime = [True]*n
+#     is_prime[0] = is_prime[1] = False
+    
+#     for i in range (2, math.ceil(math.sqrt(n))):
+#         if (is_prime[i]):
+#             for multiples_of_i in range(i*i, n, i):
+#                 is_prime[multiples_of_i] = False
+#     return sum(is_prime)
+
+
+#*Third Attempt
+
+# import math
+
+# def count_primes(n):
+#     if (n < 2):
+#         return 0
+    
+#     is_prime= [True] *n 
+#     is_prime[0] = is_prime[1] = False
+
+#     for i in range (2, math.ceil(math.sqrt(n))):
+#         if (is_prime[i]):
+#             for multiples_of_i in range(i*i, n, i):
+#                 is_prime[multiples_of_i] = False
+#     return sum(is_prime)
+
+
+
+
+
+# n = 179424674
+
+# result = count_primes(n)
+
+# print (f"Number of prime numbers below {n} is {result} ")
+
+#*Whiteboarding Solution
+
+import math
+
+def count_primes(n):
+    if (n < 2):
+        return 0
+    
+    is_prime = [True] * n
+    is_prime[0] = is_prime[1]= False
+
+    for i in range (2, int(math.ceil(math.sqrt(n))) ):
+        if (is_prime[i]):
+            for multiples_of_i in range (i*i, n, i):
+                is_prime[multiples_of_i] = False
+    return (sum(is_prime))
+
+
+
+
+
+n = 179424674
+
+result = count_primes(n)
+
+print (f"Number of prime numbers below {n} is {result} ")
