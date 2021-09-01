@@ -1,8 +1,11 @@
 
 
 """
+"""
 Given two binary strings a and b, return their sum as a binary string.
-Time O(N), space 0(1)
+Time O(N) ... we do a loop over the maximum length of the 2 strings
+ space 0(N)... Create Array that will hold our answer while we are looping
+"""
 """
 
 def add_binary(a, b):
