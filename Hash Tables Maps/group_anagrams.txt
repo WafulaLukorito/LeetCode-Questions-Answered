@@ -37,6 +37,29 @@ class Solution:
         return answers
 
 
+
+
+#* * * * * * * * * * * *Simple Solution* * * * *
+
+
+def group_anagrams(strs):
+    if len(strs) <2:
+        return [strs]
+    
+    d = {}
+
+    for s in strs:
+        s_hashed = "".join(sorted(s))
+        if s_hashed in d.keys():
+            d[s_hashed].append[s]
+        
+        else: 
+            d[s_hashed] = [s]
+
+    return d.values()
+
+
+
 s = Solution()
 
 strs = ["cat", "dog", "god", "act", "tac", "man"]
