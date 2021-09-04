@@ -2,5 +2,7 @@
     "python.autoComplete.addBrackets": true,
     "python.autoComplete.extraPaths": [
     
-    ]
+    ],
+    "python.analysis.extraPaths": [],
+    "python.analysis.completeFunctionParens": true
 }
