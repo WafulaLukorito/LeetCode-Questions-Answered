@@ -25,3 +25,31 @@ if (value != -1):
     print(f"Your value {target} has been located at index {value}.")
 else:
     print (f"Your value {target} cannot be located in this dataset, we're very sorry.")
+
+#*SECOND WHITEBOARDING ATTEMPTS*---------------------------------------------------------------->
+
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while (left <= right):
+        mid = (left + right)//2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid -1
+    return -1
+
+
+
+array1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+num = 15
+result = binary_search(array1, num)
+
+if result == -1:
+    print(f"We're sorry, the number {num} does not appear in our array")
+else:
+    print(f"The number {num} appears at index {result}")

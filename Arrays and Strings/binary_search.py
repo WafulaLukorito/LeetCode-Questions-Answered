@@ -1,11 +1,11 @@
 
-#*Attempt 1
+# *Attempt 1
 
 # def binary_search(arr, target):
 #     left = 0
 #     right = len(arr) - 1
 #     while (left <= right):
-#         mid = (left+right)//2 
+#         mid = (left+right)//2
 
 #         if (target == arr[mid]):
 #             return mid
@@ -17,8 +17,6 @@
 #     return -1
 
 
-
-
 # arr = [ 1, 2, 3, 6]
 # target = 7
 
@@ -28,10 +26,6 @@
 #     print ("Value found at index %d" % result)
 # else:
 #     print ("Sorry, value not found in array")
-
-
-
-
 
 
 # #*Attempt 2
@@ -51,8 +45,6 @@
 #     return -1
 
 
-
-
 # arr = [1,2,3,4,5,6,7,8,9]
 # target = 5
 
@@ -63,7 +55,7 @@
 # else:
 #     print (f"Sorry, the value {target} was not found in this dataset")
 
-#* Attempt 3
+# * Attempt 3
 
 # def binary_search(arr, target):
 #     left = 0
@@ -92,35 +84,94 @@
 #     while value == -1:
 #         print(f"Value {target} not found in dataset. Please try another value. \n")
 #         target = int(input("Enter another value you desire to find: \n"))
-#         value = binary_search(sorted_arr, target) 
+#         value = binary_search(sorted_arr, target)
 
 
-#*Whiteboard implementation
+# *Whiteboard implementation
 
-#? Time Complexity O(log n)
+# ? Time Complexity O(log n)
 
+# def binary_search(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+#     while (left <= right):
+#         mid = (left+right)//2
+#         if (target == arr[mid]):
+#             return mid
+#         elif (target < arr[mid]):
+#             right = mid - 1
+#         else:
+#             left = mid + 1
+#     return -1
+
+
+# arr = [1,2,3,4,5,6]
+
+# target = 8
+
+# value = binary_search(arr, target)
+
+# if (value != -1):
+#     print(f"Your value {target} has been located at index {value}.")
+# else:
+#     print (f"Your value {target} cannot be located in this dataset, we're very sorry.")
+
+# ? aTTEMPT TWO MONTHS LATER
+
+# def binary_search(arr, target):
+#     left = 0
+#     right = len(arr) -1
+
+#     while (left <= right):
+#         mid = (left+right)//2
+#         if arr[mid] == target:
+#             return mid
+#         elif (target < arr[mid]):
+#             right = mid - 1
+#         else:
+#                     left = mid + 1
+#     return -1
+
+
+# *ATTEMPT two
+
+
+# def binary_search(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+
+#     while (left <= right):
+#         mid = (left + right)//2
+#         if (target == arr[mid]):
+#             return mid
+#         elif (arr[mid] > target):
+#             right = mid - 1
+#         else:
+#             left = mid + 1
+#     return -1
+
+#*SECOND WHITEBOARDING ATTEMPTS*---------------------------------------------------------------->
 def binary_search(arr, target):
     left = 0
     right = len(arr) - 1
+
     while (left <= right):
-        mid = (left+right)//2
-        if (target == arr[mid]):
+        mid = (left + right)//2
+        if arr[mid] == target:
             return mid
-        elif (target < mid):
-            right = mid - 1
-        else:
+        elif arr[mid] < target:
             left = mid + 1
+        else:
+            right = mid -1
     return -1
 
 
+array1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
-arr = [1,2,3,4,5,6]
+num = 15
+result = binary_search(array1, num)
 
-target = 8
-
-value = binary_search(arr, target)
-
-if (value != -1):
-    print(f"Your value {target} has been located at index {value}.")
+if result == -1:
+    print(f"We're sorry, the number {num} does not appear in our array")
 else:
-    print (f"Your value {target} cannot be located in this dataset, we're very sorry.")
+    print(f"The number {num} appears at index {result}")
