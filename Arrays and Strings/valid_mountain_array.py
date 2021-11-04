@@ -8,6 +8,13 @@ arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
 arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
 
 
+#? Time Complexity = O(N)--- O(N)+O(N)---two loops over array
+
+#? Space Complexity = O(1) ---- did not use additional memory space
+
+
+
+
     """
 
 #* ----2 months later ----*
