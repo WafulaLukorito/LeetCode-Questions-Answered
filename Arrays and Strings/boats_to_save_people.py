@@ -3,6 +3,10 @@
 
 #*Return the minimum number of boats to carry every given person.
 
+#? Time Complexity = O(N log N).... Sorting input array O(N log N), Looping over sorted array O(N)
+
+#? Space Complexity = O(N) .... People.sort() internally uses an algorithm that has O(N) space complexity
+
 #*----------2 MONTHS LATER------
 
 # def boats_to_save_people (people, limit):
@@ -55,12 +59,9 @@ def boats_to_save_people(people, limit):
             boats += 1
             break
         if people[left] + people[right] < limit:
-            boats += 1
             left +=1
-            right -= 1
-        else:
-            boats += 1
-            right -=1
+        boats += 1
+        right -= 1
     return boats
 
 people = [3,5,3,4]
