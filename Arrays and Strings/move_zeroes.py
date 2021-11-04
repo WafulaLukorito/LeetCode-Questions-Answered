@@ -4,6 +4,59 @@
 
 #!Note that you must do this in-place without making a copy of the array.
 
+
+#*------ 2 MONTHS LATER------ 
+
+
+
+nums = [1, 0,2,3,0,7,5,0,9,0,7,0,0, 9]
+
+# j = 0
+# n = len(nums)
+
+# for num in nums:
+#     if (num != 0):
+#         nums[j] = num
+#         j+=1
+
+# for i in range(j, n):
+#     nums[i] = 0
+
+
+
+
+#* Second Attempt
+
+# j = 0
+# for num in nums:
+#     if num != 0:
+#         nums[j] = num
+#         j+=1
+
+# for i in range (j, len(nums)):
+#     nums[i] = 0
+
+
+
+# print (nums)
+
+
+#*-------Whiteboarding---------------------------
+
+j = 0
+
+for num in nums:
+    if num !=0:
+        nums[j] = num
+        j+=1
+
+for i in range (j, len(nums)):
+    nums[i] = 0
+
+
+
+print (nums)
+
 # nums = [0,2,3,0,7,5,0,9,0]
 
 # j=0
@@ -59,19 +112,19 @@
 
 #*Attempt after a week
 
-nums = [1, 0,2,3,0,7,5,0,9,0,7,0,0, 9]
+# nums = [1, 0,2,3,0,7,5,0,9,0,7,0,0, 9]
 
 
-j = 0
-k = 0 
+# # j = 0
+# # k = 0 
 
-for num in nums:
-    if num == 0:
-        j+=1
-    else:
-        nums[k] = num
-        k+=1
-for i in range (len(nums) - j, len(nums)):
-    nums[i] = 0
+# # for num in nums:
+# #     if num == 0:
+# #         j+=1
+# #     else:
+# #         nums[k] = num
+# #         k+=1
+# # for i in range (len(nums) - j, len(nums)):
+# #     nums[i] = 0
 
-print (nums)
+# print (nums)

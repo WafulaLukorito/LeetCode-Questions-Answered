@@ -3,6 +3,72 @@
 
 #*Return the minimum number of boats to carry every given person.
 
+#*----------2 MONTHS LATER------
+
+# def boats_to_save_people (people, limit):
+#     people.sort()
+#     left = 0
+#     boats = 0
+#     right= len(people) -1
+#     while left <= right:
+#         if left ==right:
+#             boats+=1
+            
+#         else:
+#             if people[left] + people[right] <= limit:
+#                 boats+=1
+#                 left +=1
+#                 right -=1
+#             if people[left] + people[right] > limit:
+#                 boats +=1
+#                 right -=1
+#     return boats
+
+#* Attempt  2
+
+# def boats_to_save_people (people, limit):
+#     left = 0
+#     boats = 0
+#     right = len(people)-1
+#     while left <= right:
+#         if left ==right:
+#             boats += 1
+#             break
+#         if people[left] + people[right] > limit:
+#             boats +=1
+#             right -= 1
+#         else:
+#             boats+=1
+#             right = -1
+#             left += 1
+#     return boats
+
+
+#*-------Whiteboarding-------
+def boats_to_save_people(people, limit):
+    left = 0
+    right = len(people) - 1
+    boats = 0
+
+    while (left <= right):
+        if left == right:
+            boats += 1
+            break
+        if people[left] + people[right] < limit:
+            boats += 1
+            left +=1
+            right -= 1
+        else:
+            boats += 1
+            right -=1
+    return boats
+
+people = [3,5,3,4]
+limit = 5
+
+result = boats_to_save_people(people, limit)
+print (f"The minimum number of boats to carry people {people} is {result}")
+
 # def boats_to_save_people (people, limit):
 #     people.sort()
 #     left = 0
