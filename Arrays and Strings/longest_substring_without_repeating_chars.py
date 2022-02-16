@@ -1,4 +1,52 @@
 
+"""
+Given a string s, find the length of the longest substring without repeating characters.
+
+#? Sliding window technique 
+
+
+    """
+
+
+
+
+
+
+
+
+def longest_substring(string):
+    if len(string) == 1:
+        return 1
+    m = []
+    i = 0
+    j = 0
+    maxi = 0
+    n = len(string)
+    while j < n:
+        if string[j] not in m:
+            m.append(string[j])
+            j+=1
+            maxi = max(len(m), maxi)
+        else:
+            m.remove(string[i])
+            i+=1
+    return maxi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def longest_substring(string):
     if (len(string) == 1):

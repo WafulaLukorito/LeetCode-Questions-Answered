@@ -1,0 +1,11 @@
+
+
+def longest_substring(string):
+    """
+    Given a string, find the longest substring without repeating characters.
+    """
+    if len(string) == 0:
+        return 0
+    if len(string) == 1:
+        return 1
+    

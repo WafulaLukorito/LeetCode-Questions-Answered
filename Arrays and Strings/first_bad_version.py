@@ -14,11 +14,10 @@ class Solution:
     def firstBadVersion(self, n):
         """
         :type n: int
-        :rtype: int
+        :type: int
         """
         left = 1
         right = n
-        
         while (left < right):
             mid = (left + right)//2
             if(not isBadVersion(mid)):

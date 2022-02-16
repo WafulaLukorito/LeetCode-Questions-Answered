@@ -1,0 +1,31 @@
+"""For our first problem, we would like to “rotate” a list, or move elements forward in a list by a number of spaces, k.
+
+Elements at the greatest index will “wrap around” to the beginning of the list."""
+# rotate list
+# no time/space requirements
+# return "rotated" version of input list
+
+#*------One Solution---------------- O(N) space create new lists
+# def rotate(my_list, num_rotations):
+#   places_moved= num_rotations % len(my_list)
+#   part_1 = my_list[-places_moved:]
+#   part_2 = my_list[:-places_moved]
+#   new_list=part_1 + part_2
+#   return new_list
+
+#*-------Another Solution-----  O(N) space. Shifting places
+# def rotate(my_list, num_rotations):
+#   for i in range (num_rotations):
+#     my_list.insert(0, my_list.pop())
+#   return my_list
+
+
+
+#### TESTS SHOULD ALL BE TRUE ####
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 1), ['f', 'a', 'b', 'c', 'd', 'e'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 1) == ['f', 'a', 'b', 'c', 'd', 'e']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 2), ['e', 'f', 'a', 'b', 'c', 'd'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 2) == ['e', 'f', 'a', 'b', 'c', 'd']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 3), ['d', 'e', 'f', 'a', 'b', 'c'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 3) == ['d', 'e', 'f', 'a', 'b', 'c']))
+
+print("{0}\n should equal \n{1}\n {2}\n".format(rotate(['a', 'b', 'c', 'd', 'e', 'f'], 4), ['c', 'd', 'e', 'f', 'a', 'b'], rotate(['a', 'b', 'c', 'd', 'e', 'f'], 4) == ['c', 'd', 'e', 'f', 'a', 'b']))

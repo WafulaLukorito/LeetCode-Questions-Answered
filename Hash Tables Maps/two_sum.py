@@ -49,16 +49,38 @@ You can return the answer in any order.
 
 #*Whiteboard Solution
 
+# def two_sum(nums, target):
+#     nums_to_index = {}
+
+#     for i in range(0, len(nums)):
+#         goal = target - nums[i]
+#         if goal in nums_to_index:
+#             return nums_to_index[goal], i
+#         nums_to_index[nums[i]]= i
+
+# nums= [3,3]
+# target = 6
+
+# result = two_sum(nums, target)
+
+#print (f"The numbers that add up to {target} can be found in indices {result[0]} and {result[1]}.")
+
+
+#* 2022 Solution
+
+
 def two_sum(nums, target):
+
     nums_to_index = {}
 
-    for i in range(0, len(nums)):
+    for i in range (0, len(nums)):
         goal = target - nums[i]
         if goal in nums_to_index:
             return nums_to_index[goal], i
-        nums_to_index[nums[i]]= i
+        nums_to_index[nums[i]] = i
 
-nums= [3,3]
+
+nums= [5, 6, 4, 7, 2, 9]
 target = 6
 
 result = two_sum(nums, target)
