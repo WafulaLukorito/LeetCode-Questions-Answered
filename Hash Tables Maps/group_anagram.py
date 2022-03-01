@@ -11,8 +11,77 @@
     M * Log(M)--> due to the fact that we sort each string when we pass over it in the loop.
 
     #? Space: O(N)-- use hashmap to store our data
+
     """
 # from typing import List
+# class Solution:
+
+#     def findHash(self, str):
+#         return "".join(sorted(str))  #* sort a string 
+
+
+#     def group_anagrams(self, strs):
+#         answers = []
+#         m = {}
+
+#         for s in strs:
+#             hashed = self.findHash(s)
+#             if hashed not in m:
+#                 m[hashed] = []
+#             m[hashed].append(s)
+
+#         for p in m.values():
+#             answers.append(p)
+        
+#         return answers
+    
+
+
+class Solution:
+
+    def find_hash(self, str):
+        return " ".join(sorted(str))
+
+    def group_anagrams(self, strs):
+        answers = []
+        hash_to_words = {}
+
+        for s in strs:
+            hashed = self.find_hash(s)
+            if hashed not in hash_to_words:
+                hash_to_words[hashed]= []
+            hash_to_words[hashed].append(s)
+
+        for value in hash_to_words.values():
+            answers.append(value)
+
+        return answers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # class Solution:
@@ -107,25 +176,25 @@
 
 # *Whiteboarding Attempt
 
-class Solution:
+# class Solution:
 
-    def hashed_string(self, s):
-        return "".join(sorted(s))
+#     def hashed_string(self, s):
+#         return "".join(sorted(s))
 
-    def group_anagrams(self, strs: list[str]) -> list[list[str]]:
-        answers = []
-        m = {}
+#     def group_anagrams(self, strs: list[str]) -> list[list[str]]:
+#         answers = []
+#         m = {}
 
-        for s in strs:
-            hashed_s = self.hashed_string(s)
-            if (hashed_s not in m):
-                m[hashed_s] = []
-            m[hashed_s].append(s)
+#         for s in strs:
+#             hashed_s = self.hashed_string(s)
+#             if (hashed_s not in m):
+#                 m[hashed_s] = []
+#             m[hashed_s].append(s)
 
-        for val in m.values():
-            answers.append(val)
+#         for val in m.values():
+#             answers.append(val)
 
-        return answers
+#         return answers
 
 
 s = Solution()
