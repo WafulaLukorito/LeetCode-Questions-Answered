@@ -33,31 +33,66 @@ lRUCache.get(4);    // return 4
 
 '''
 
+#from collections import deque
+
+# class  LRUCache:
+
+#     def __init__(self, capacity: int):
+#         self.c = capacity
+#         self.m = dict()
+#         self.deq = deque()
+
+#     def get (self, key:int) -> int:
+#         if key in self.m:
+#             value = self.m[key]
+#             self.deq.remove(key)
+#             self.deq.append(key)
+#             return value
+#         else:
+#             return -1
+    
+#     def put (self, key: int, value: int) -> None:
+#         if key not in self.m:
+#             if len(self.deq) == self.c:
+#                 oldest = self.deq.popleft()
+#                 del self.m[oldest]
+#         else:
+#             self.deq.remove(key)
+
+#         self.m[key] = value 
+#         self.deq.append(key)
+
+
+#*-----2022 ATTEMPT--------------
 from collections import deque
-
-class  LRUCache:
-
+class LRUCache:
     def __init__(self, capacity: int):
         self.c = capacity
         self.m = dict()
         self.deq = deque()
 
-    def get (self, key:int) -> int:
+    def get(self, key: int, ) -> int:
         if key in self.m:
             value = self.m[key]
             self.deq.remove(key)
             self.deq.append(key)
             return value
+
         else:
             return -1
-    
-    def put (self, key: int, value: int) -> None:
-        if key not in self.m:
-            if len(self.deq) == self.c:
-                oldest = self.deq.popleft()
-                del self.m[oldest]
-        else:
-            self.deq.remove(key)
 
-        self.m[key] = value 
-        self.deq.append(key)
+    
+    def put(self, key:int, value:int)  -> None:
+        if key in self.m:
+            self.deq.remove(key)
+            self.deq.append(key)
+            self.m[key] = value
+        else:
+            if self.c == len(self.deq):
+                oldest=self.deq.popleft()
+                del self.m[oldest]
+                self.deq.append(key)
+                self.m[key] = value
+            else:
+                self.deq.append(key)
+                self.m[key] = value

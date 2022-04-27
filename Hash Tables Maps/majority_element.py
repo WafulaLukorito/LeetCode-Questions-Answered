@@ -46,11 +46,14 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 #             return num
 
 #*Whiteboarding attempt
+from collections import Counter
+
 
 def majority_element(nums):
-    m={}
-    for num in nums:
-        m[num]=m.get(num, 0)+1
+    m=Counter(nums)
+    print (m)
+    # for num in nums:
+    #     m[num]=m.get(num, 0)+1
     for num in nums:
         if m[num] > len(nums)//2:
             return num
