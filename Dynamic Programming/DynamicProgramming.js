@@ -184,18 +184,18 @@ const canSumMemo = (targetSum, nums, memo = {}) => {
 
 
 
-console.log(canSumMemo(0, [2, 3, 6, 7]));
-console.log(canSumMemo(1, [1]));
+// console.log(canSumMemo(0, [2, 3, 6, 7]));
+// console.log(canSumMemo(1, [1]));
 
-console.log(canSumMemo(4, [9, 3, 6, 7]));
-console.log(canSumMemo(5, [9, 3, 6, 7]));
-console.log(canSumMemo(6, [9, 3, 6, 7]));
-console.log(canSumMemo(300, [7, 14]));
-console.log(canSumMemo(2, [1, 2]));
-console.log(canSumMemo(3, [1, 2, 3]));
-console.log(canSumMemo(4, [1, 2, 3]));
-console.log(canSumMemo(5, [1, 2, 3]));
-console.log(canSumMemo(6, [1, 2, 3]));
+// console.log(canSumMemo(4, [9, 3, 6, 7]));
+// console.log(canSumMemo(5, [9, 3, 6, 7]));
+// console.log(canSumMemo(6, [9, 3, 6, 7]));
+// console.log(canSumMemo(300, [7, 14]));
+// console.log(canSumMemo(2, [1, 2]));
+// console.log(canSumMemo(3, [1, 2, 3]));
+// console.log(canSumMemo(4, [1, 2, 3]));
+// console.log(canSumMemo(5, [1, 2, 3]));
+// console.log(canSumMemo(6, [1, 2, 3]));
 
 
 //!HOWSUM PROBLEM
@@ -212,4 +212,33 @@ If there are multiple combinations possible, you may return any
 single one.
 */
 
+//*Time complexity -->  m = targetSum, n = numbers.length. Time O(m^n). Additional time in spread operation, which is O(m)
+//*Total time complexity --> O(m^n * m) = O(m^n)
+//*Space complexity --> O(m)
+const howSumRecursive = (targetSum, numbers, ) => {
+    if (targetSum === 0) return [];
+    if (targetSum < 0) return null;
 
+    for (let num of numbers) {
+        const remainder = targetSum - num;
+        const remainderResult = howSumRecursive(remainder, numbers);
+        if (remainderResult !== null) {
+            return [...remainderResult, num];
+        }
+
+    }
+
+    return null;
+}
+
+
+//MEMOIZATION
+
+
+
+
+console.log(howSumRecursive(0, [2, 3, 6, 7]));
+console.log(howSumRecursive(7, [9, 3, 6, 4]));
+console.log(howSumRecursive(1, [1]));
+console.log(howSumRecursive(2, [1, 2]));
+console.log(howSumRecursive(3, [5, 5, 5]));
