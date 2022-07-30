@@ -39,6 +39,8 @@ class LinkedList:
 
         print(linked_list)
 
+    def insert
+
 
 arr = [1,2,3,4,5]
 

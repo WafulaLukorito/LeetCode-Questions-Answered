@@ -53,3 +53,31 @@ if result == -1:
     print(f"We're sorry, the number {num} does not appear in our array")
 else:
     print(f"The number {num} appears at index {result}")
+
+
+#* Aug 2022 ATTEMPT
+
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while (left <= right):
+        mid = (left + right) // 2
+        if (arr[mid]==target):
+            return mid
+        elif (arr[mid] > target):
+            right = mid -1
+        else:
+            left = mid + 1
+    
+    return -1
+
+arr = [1,2,3,4,5,6,7]
+target = 4
+
+result = binary_search(arr, target)
+
+if (result == -1):
+    print (f"The target {target} was not found in our array)
+else:
+    print(f"The target {target} was found at index {result} of our array)

@@ -150,28 +150,57 @@
 #             left = mid + 1
 #     return -1
 
-#*SECOND WHITEBOARDING ATTEMPTS*---------------------------------------------------------------->
+# *SECOND WHITEBOARDING ATTEMPTS*---------------------------------------------------------------->
+# def binary_search(arr, target):
+#     left = 0
+#     right = len(arr) - 1
+
+#     while (left <= right):
+#         mid = (left + right)//2
+#         if arr[mid] == target:
+#             return mid
+#         elif arr[mid] < target:
+#             left = mid + 1
+#         else:
+#             right = mid -1
+#     return -1
+
+
+# array1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+# num = 15
+# result = binary_search(array1, num)
+
+# if result == -1:
+#     print(f"We're sorry, the number {num} does not appear in our array")
+# else:
+#     print(f"The number {num} appears at index {result}")
+
+
+# * Aug 2022 ATTEMPT
+
 def binary_search(arr, target):
     left = 0
     right = len(arr) - 1
 
     while (left <= right):
-        mid = (left + right)//2
-        if arr[mid] == target:
+        mid = (left + right) // 2
+        if (arr[mid] == target):
             return mid
-        elif arr[mid] < target:
-            left = mid + 1
+        elif (arr[mid] > target):
+            right = mid - 1
         else:
-            right = mid -1
+            left = mid + 1
+
     return -1
 
 
-array1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+arr = [1, 2, 3, 4, 5, 6, 7]
+target = 4
 
-num = 15
-result = binary_search(array1, num)
+result = binary_search(arr, target)
 
-if result == -1:
-    print(f"We're sorry, the number {num} does not appear in our array")
+if (result == -1):
+    print(f"The target {target} was not found in our array")
 else:
-    print(f"The number {num} appears at index {result}")
+    print(f"The target {target} was found at index {result} of our array")
