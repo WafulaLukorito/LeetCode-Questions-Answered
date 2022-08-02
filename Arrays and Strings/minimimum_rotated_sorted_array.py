@@ -29,6 +29,6 @@ def findMin(nums):
 
 
 nums = [4, 5, 6, 7, 9, 20, 24, 2, 3]
-min = findMin(nums)
+mini = findMin(nums)
 
-print(f"Minimum in sorted but rotated array {nums} is {min}")
+print(f"Minimum in sorted but rotated array {nums} is {mini}")
