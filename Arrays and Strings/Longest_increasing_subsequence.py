@@ -9,7 +9,7 @@
 # def longest_increasing(nums):
 #     if len(nums) == 1:
 #         return 1
-
+# a
 #     i, j = 0, 0
 #     max_length = 0
 #     while j < len(nums):
@@ -28,154 +28,24 @@
 
 # print(f"The longest increasing subarray is {result} indices long")
 
-
-# *Attempt 2
-
-# def longest_increasing(nums):
-#     if (not nums):
-#         return 0
-
-#     if (len(nums) == 1):
-#         return 1
-
-#     i = 0
-#     j = 0
-
-#     max_length = 0
-
-#     for num in range(len(nums)):
-#         j += 1
-#         max_length = max(max_length, j - i)
-
-#         if ( j < len(nums) and nums[j] <= nums[j-1]):
-#             i = j
-#     return max_length
-
-
-# nums = [1, 2, 3, 0, 2, 4, 5, 6, 7, 8, 9, 10,  3]
-
-# result = longest_increasing(nums)
-
-# print(f"The longest increasing subarray is {result} indices long")
-
-# def longest_increasing(nums):
-
-#     if not nums:
-#         return 0
-
-#     if (len(nums) == 1):
-#         return 1
-
-#     i = 0
-#     j = 0
-#     max_size = 0
-
-#     for num in nums:
-#         j += 1
-#         max_size = max(max_size, j-i)
-
-#         if (j < len(nums) and nums[j] <= nums[j-1]):
-#             i = j
-
-#     return max_size
-
-
-# nums = [954,955]
-# #[1, 2, 3, 0, 2, 4, 5, 6, 7, 8, 9, 10,  3]
-
-# result = longest_increasing(nums)
-
-# print(f"The longest increasing subarray is {result} indices long")
-
-# # *Whiteboarding solution
-
-# def longest_increasing (nums):
-#     if not nums:
-#         return 0
-#     if (len(nums) == 1):
-#         return 1
-
-#     i = 0
-#     j = 0
-#     max_size = 0
-
-#     while (j < len(nums)):
-#         j+=1
-#         max_size = max (max_size, j-i)
-
-#         if (j < len(nums) and nums[j] < nums[j-1]):
-#             i = j
-
-#     return max_size
-
-
-
-
-
-# nums = [1, 2, 3, 0, 2, 4, 5, 6, 7, 8, 9, 10,  3]
-
-# result = longest_increasing(nums)
-
-# print(f"The longest increasing subarray is {result} indices long")
-
-# #*-------2 MONTHS LATER--------------------
-
-
-# def longest_increasing(nums):
-#     if len(nums) == 1:
-#         return 1
-#     else:
-#         max_length = 0
-#         left = 0
-#         right = 0
-#         while (right < len(nums)):
-#             right+=1
-#             curr_length = right - left
-#             max_length = max(max_length, curr_length)
-#             if (right <len(nums)) and (nums[right-1] >= nums[right]):
-#                 left = right
-
-#         return max_length
-
-
-#*---- SECOND ATTEMPT----------------
-
-
-# def longest_increasing(nums):
-#     left, right = 0, 0
-#     max_length= 0 
-
-#     while (right < len(nums)):
-#         right +=1
-#         curr_length = right - left
-#         max_length = max(max_length, curr_length)
-#         if (right < len(nums)) and (nums[right-1] >= nums[right]):
-#             left = right
-#     return max_length
-
-#*--------Whiteboarding Attempt--------------------------------
-
 def longest_increasing(nums):
-    if len (nums)==1:
+    if not nums:
+        return 0
+    elif (len(nums) == 1):
         return 1
     else:
-        left, right = 0, 0
-        max_length = 0 
-
+        right, left = 0, 0
+        max_len = 0
         while (right < len(nums)):
-            right +=1
-            current_length = right - left 
-            max_length =max(current_length, max_length)
+            right += 1
+            max_len = max(max_len, (right - left))
+            if (right < len(nums) and nums[right-1] >= nums[right]):
+                left = right
+        return max_len
 
-            if (right < len(nums)) and (nums[right-1]) >= nums[right]:
-                left = right 
-        
-        return max_length
 
-nums = [1,3,5,4,7]
+nums = [1, 2, 3, 0, 2, 4, 5, 6, 7, 8, 9, 10,  3]
 
 result = longest_increasing(nums)
 
 print(f"The longest increasing subarray is {result} indices long")
-
-

@@ -4,69 +4,44 @@ Given a string s, find the length of the longest substring without repeating cha
 
 #? Sliding window technique 
 
+"""
 
-    """
-
-
-
-
-
-
+# def longest_substring(myString):
+#     """
+#     Given a string, find the longest substring without repeating characters.
+#     """
+#     if len(myString) == 1:
+#         return 1
+#     left = 0
+#     right = 0
+#     max_length = 0
+#     while right < len(myString):
+#         if myString[right] not in myString[left:right]:
+#             right += 1
+#             max_length = max(max_length, right - left)
+#         else:
+#             left += 1
+#     return max_length
 
 
 def longest_substring(string):
+    """
+    Given a string, find the longest substring without repeating characters.
+    """
     if len(string) == 1:
         return 1
-    m = []
-    i = 0
-    j = 0
-    maxi = 0
-    n = len(string)
-    while j < n:
-        if string[j] not in m:
-            m.append(string[j])
-            j+=1
-            maxi = max(len(m), maxi)
+    left, right = 0, 0
+    max_len = 0
+    while right < len(string):
+        if string[right] not in string[left:right]:
+            right += 1
+            max_len = max(max_len, right-left)
         else:
-            m.remove(string[i])
-            i+=1
-    return maxi
+            left += 1
+    return max_len
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def longest_substring(string):
-    if (len(string) == 1):
-        return 1
-    m = []
-    i = 0
-    j = 0
-    maxi = 0
-    n = len(string)
-
-    while (j < n):
-        if (string[j] not in m):
-            m.append (string[j])
-            j+=1
-            maxi = max(len(m), maxi)
-        else:
-             m.remove(string[i])
-             i+=1
-    return maxi
-
+print(longest_substring("abcabcbb"))  # 3
 
 
 string = "abcdabdfghijkla"
