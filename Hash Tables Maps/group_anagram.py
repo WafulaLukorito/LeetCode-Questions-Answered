@@ -17,7 +17,7 @@
 # class Solution:
 
 #     def findHash(self, str):
-#         return "".join(sorted(str))  #* sort a string 
+#         return "".join(sorted(str))  #* sort a string
 
 
 #     def group_anagrams(self, strs):
@@ -32,178 +32,8 @@
 
 #         for p in m.values():
 #             answers.append(p)
-        
-#         return answers
-    
-
-
-class Solution:
-
-    def find_hash(self, str):
-        return " ".join(sorted(str))
-
-    def group_anagrams(self, strs):
-        answers = []
-        hash_to_words = {}
-
-        for s in strs:
-            hashed = self.find_hash(s)
-            if hashed not in hash_to_words:
-                hash_to_words[hashed]= []
-            hash_to_words[hashed].append(s)
-
-        for value in hash_to_words.values():
-            answers.append(value)
-
-        return answers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Solution:
-#     def find_hash(self, s):
-#         return ''.join(sorted(s))
-
-#     def group_anagrams(self, strs: List[str]) -> List[List[str]]:
-#         answers = []
-#         m={}
-
-#         for str in strs:
-#             hashed_str= self.find_hash(str)
-#             if (hashed_str not in m):
-#                 m[hashed_str] = []
-#             m[hashed_str].append(str)
-
-#         for val in m.values():
-#             answers.append(val)
 
 #         return answers
-
-
-# strs = ["eat","tea","tan","ate","nat","bat"]
-
-# s = Solution()
-
-# result = s.group_anagrams(strs)
-
-# print (result)
-
-# * Second Attempt
-
-# from typing import List
-
-
-# class Solution:
-
-#     def find_hash(self, str):
-#         return ''.join(sorted(str))
-
-#     def group_anagrams(self, strs:List[str]) -> List[List[str]]:
-#         answers = []
-#         m = {}
-
-#         for str in strs:
-#             hashed_str=self.find_hash(str)
-#             if (hashed_str not in m):
-#                 m[hashed_str]=[]
-#             m[hashed_str].append(str)
-
-#         for val in m.values():
-#             answers.append(val)
-
-#         return answers
-
-# s = Solution()
-
-
-# *Third Attempt
-
-# from typing import List
-
-
-# class Solution:
-
-#     def find_hash(self, s):
-#         return ''.join(sorted(s))
-
-#     def group_anagrams(self, strs:List[str]) -> List[List[str]]:
-#         answers = []
-#         m = {}
-
-#         for s in strs:
-#             hashed_s = self.find_hash(s)
-#             if (hashed_s not in m):
-#                 m[hashed_s] = []
-#             m[hashed_s].append(s)
-
-#         for val in m.values():
-#             answers.append(val)
-
-#         return answers
-
-
-# s = Solution()
-
-# strs = ["cat", "ant", "act", "tac", "tan", "sad"]
-
-# results = s.group_anagrams(strs)
-# print(results)
-
-
-# *Whiteboarding Attempt
-
-# class Solution:
-
-#     def hashed_string(self, s):
-#         return "".join(sorted(s))
-
-#     def group_anagrams(self, strs: list[str]) -> list[list[str]]:
-#         answers = []
-#         m = {}
-
-#         for s in strs:
-#             hashed_s = self.hashed_string(s)
-#             if (hashed_s not in m):
-#                 m[hashed_s] = []
-#             m[hashed_s].append(s)
-
-#         for val in m.values():
-#             answers.append(val)
-
-#         return answers
-
-
-s = Solution()
-
-strs = ["cat", "dog", "god", "act", "tac", "man"]
-
-result = s.group_anagrams(strs)
-
-print(result)
 
 
 # *** Another Very simple solution ***
@@ -219,7 +49,7 @@ print(result)
 #             d[s].append(i)
 #         else:
 #             d[s] = [i]
-        
+
 #     return d.values()
 
 # strs = ["cat", "dog", "god", "act", "tac", "man"]
@@ -227,3 +57,43 @@ print(result)
 # result = group_anagrams(strs)
 
 # print(result)
+
+
+# def group_anagrams(strs):
+#     if len(strs) <= 1:
+#         return [strs]
+#     hs_to_str = {}
+
+#     for str in strs:
+#         hs = "".join(sorted(str))
+#         if hs in hs_to_str:
+#             hs_to_str[hs].append(str)
+#         else:
+#             hs_to_str[hs] = [str]
+
+#     grouped = (hs_to_str.values())
+#     res = []
+#     for item in grouped:
+#         res.append(item)
+#     return res
+
+def group_anagrams(strs):
+    if len(strs) <= 1:
+        return strs
+
+    m = {}
+    for str in strs:
+        hs = "".join(sorted(str))
+        if hs in m:
+            m[hs].append(str)
+        else:
+            m[hs] = [str]
+
+    return m.values()
+
+
+strs = ["cat", "dog", "god", "act", "tac", "man"]
+
+result = group_anagrams(strs)
+
+print(result)

@@ -16,7 +16,7 @@
 #         return 0
 #     is_prime = [True] * n
 #     is_prime[0] = is_prime[1] = False
-    
+
 #     for i in range(2, int(math.ceil(math.sqrt(n)))):
 #         if (is_prime[i]):
 #             for  multiples_of_i in range (i*i, n, i):
@@ -24,8 +24,7 @@
 #     return sum(is_prime)
 
 
-
-#*Second Attempt
+# *Second Attempt
 
 # import math
 
@@ -34,7 +33,7 @@
 #         return 0
 #     is_prime = [True]*n
 #     is_prime[0] = is_prime[1] = False
-    
+
 #     for i in range (2, math.ceil(math.sqrt(n))):
 #         if (is_prime[i]):
 #             for multiples_of_i in range(i*i, n, i):
@@ -42,15 +41,15 @@
 #     return sum(is_prime)
 
 
-#*Third Attempt
+# *Third Attempt
 
 # import math
 
 # def count_primes(n):
 #     if (n < 2):
 #         return 0
-    
-#     is_prime= [True] *n 
+
+#     is_prime= [True] *n
 #     is_prime[0] = is_prime[1] = False
 
 #     for i in range (2, math.ceil(math.sqrt(n))):
@@ -60,38 +59,50 @@
 #     return sum(is_prime)
 
 
-
-
-
 # n = 179424674
 
 # result = count_primes(n)
 
 # print (f"Number of prime numbers below {n} is {result} ")
 
-#*Whiteboarding Solution
+# *Whiteboarding Solution
+
+# import math
+
+# def count_primes(n):
+#     if (n < 2):
+#         return 0
+
+#     is_prime = [True] * n
+#     is_prime[0] = is_prime[1]= False
+
+#     for i in range (2, int(math.ceil(math.sqrt(n))) ):
+#         if (is_prime[i]):
+#             for multiples_of_i in range (i*i, n, i):
+#                 is_prime[multiples_of_i] = False
+#     return (sum(is_prime))
+
 
 import math
 
+
 def count_primes(n):
-    if (n < 2):
+    if n < 2:
         return 0
-    
-    is_prime = [True] * n
-    is_prime[0] = is_prime[1]= False
 
-    for i in range (2, int(math.ceil(math.sqrt(n))) ):
-        if (is_prime[i]):
-            for multiples_of_i in range (i*i, n, i):
+    is_prime = [True]*n
+    is_prime[0] = is_prime[1] = False
+
+    for i in range(2, math.ceil(math.sqrt(n))):
+        if is_prime[i]:
+            for multiples_of_i in range(i*i, n, i):
                 is_prime[multiples_of_i] = False
+
     return (sum(is_prime))
-
-
-
 
 
 n = 179424674
 
 result = count_primes(n)
 
-print (f"Number of prime numbers below {n} is {result} ")
+print(f"Number of prime numbers below {n} is {result} ")

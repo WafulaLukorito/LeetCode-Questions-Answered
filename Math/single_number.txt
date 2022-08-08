@@ -13,11 +13,12 @@ You must implement a solution with a linear runtime complexity and use only co
 #? Space complexity: Constant, due to usage of a set.
 
 """
-def find_single(nums):
-    sum_set = sum(set(nums))
+def single_number(nums):
+    my_set = set(nums)
+    intended_sum = 2 *(sum(my_set))
     current_sum = sum(nums)
-
-    return 2*sum_set - current_sum
+    single = intended_sum - current_sum
+    return single
 
 
 nums = [4,1,2,1,2]

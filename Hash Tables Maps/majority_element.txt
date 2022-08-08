@@ -10,14 +10,14 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 m.get!!
 
 """
-
 def majority_element(nums):
-    m={}
+    m = {}
     for num in nums:
-        m[num]=m.get(num, 0)+1
-    for num in nums:
+        if num in m:
+            m[num] = m.get(num)+1
         if m[num] > len(nums)//2:
             return num
+
 
 
 nums = [2,2,1,1,1,2,2]

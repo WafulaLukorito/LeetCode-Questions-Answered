@@ -6,7 +6,7 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 
 #? Time Complexity: O(2*N) = O(N)---One pass to assign value, separate pass again
 
-#?Space: O(N)--- create a map to track occurrence 
+#?Space: O(N)--- create a map to track occurrence
 
 #! Use m.get!!!
 
@@ -22,19 +22,19 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 #         if(m[num] > len(nums)//2):
 #             return num
 
-#*Second Attempt
+# *Second Attempt
 
 # def majority_element(nums):
 #     m = {}
 #     for num in nums:
 #         m[num]=m.get(num,0)+1
-    
+
 #     for num in nums:
 #         if m[num] > len(nums)//2:
 #             return num
 
 
-#*Third Attempt:
+# *Third Attempt:
 
 # def majority_element(nums):
 #     m={}
@@ -45,20 +45,46 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 #         if m[num] > len(nums)//2:
 #             return num
 
-#*Whiteboarding attempt
+# *Whiteboarding attempt
+# from collections import Counter
+
+
+# def majority_element(nums):
+#     m=Counter(nums)
+#     print (m)
+#     # for num in nums:
+#     #     m[num]=m.get(num, 0)+1
+#     for num in nums:
+#         if m[num] > len(nums)//2:
+#             return num
+
 from collections import Counter
 
 
 def majority_element(nums):
-    m=Counter(nums)
-    print (m)
-    # for num in nums:
-    #     m[num]=m.get(num, 0)+1
+    my_counter = Counter(nums)
+    for key, value in my_counter.items():
+        if value > len(nums)//2:
+            return key
+
+
+nums = [2, 2, 1, 1, 1, 2, 2]
+result = majority_element(nums)
+print(f"The majority element in array {nums} is {result} ")
+
+
+def majority_eleme(nums):
+    m = {}
+    for num in nums:
+        if num not in m:
+            m[num] = 1
+        else:
+            m[num] = m.get(num, 0)+1
     for num in nums:
         if m[num] > len(nums)//2:
             return num
 
 
 nums = [2, 2, 1, 1, 1, 2, 2]
-result = majority_element(nums)
+result = majority_eleme(nums)
 print(f"The majority element in array {nums} is {result} ")

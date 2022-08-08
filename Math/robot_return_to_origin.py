@@ -37,7 +37,7 @@ Explanation: The robot moves up once, and then down once. All moves have the sam
 #     return x == 0 and y == 0
 
 
-#*Attempt 2
+# *Attempt 2
 
 # def robot_returns(moves):
 #     if not moves:
@@ -56,31 +56,29 @@ Explanation: The robot moves up once, and then down once. All moves have the sam
 #     return x == 0 and y == 0
 
 
-#*Whiteboarding Solution
+# *Whiteboarding Solution
 def robot_returns(moves):
     if not moves:
         return True
-    x=0
-    y=0
+
+    x, y = 0, 0
     for move in moves:
-        if (move == 'R'):
-            x +=1
-        elif (move == 'L'):
-            x-= 1
-        elif (move == 'U'):
-            y+=1
+        if move == "U":
+            x += 1
+        elif move == "D":
+            x -= 1
+        elif move == "L":
+            y -= 1
         else:
-            y-=1
+            y += 1
+
     return x == 0 and y == 0
 
 
-
-
-
-
-moves = "RRRRRRRRRRUUUUUUUUUULLLLLLLLLLDDDDDDDDDD"  #true
+moves = "RRRRRRRRRRUUUUUUUUUULLLLLLLLLLDDDDDDDDDD"  # true
 # moves = "RLUD"
 
-result= robot_returns(moves)
+result = robot_returns(moves)
 
-print (f"After the moves {moves} \n It is {result} that robot returns back to origin")
+print(
+    f"After the moves {moves} \n It is {result} that robot returns back to origin")

@@ -17,8 +17,6 @@ Follow up: Could you implement a solution using only O(1) extra space complexity
 #     return int (intended_sum - current_sum)
 
 
-
-
 # #*Attempt 2
 
 
@@ -36,20 +34,19 @@ Follow up: Could you implement a solution using only O(1) extra space complexity
 #     return int(intended_sum - current_sum)
 
 
+# *Whiteboarding Solution
 
-#*Whiteboarding Solution
 
-
-def missing_number(nums):
-    n = len(nums)
-    current_sum = sum (nums)
+def missing_number(arr):
+    n = len(arr)
+    current_sum = sum(arr)
     intended_sum = n * (n+1)/2
-    return int(intended_sum - current_sum)
+    missing = int(intended_sum - current_sum)
+    return missing
 
 
+nums = [9, 6, 4, 2, 3, 5, 7, 0, 1]  # 8
 
-nums = [9,6,4,2,3,5,7,0,1] #8
+result = missing_number(nums)
 
-result=  missing_number(nums)
-
-print (f"The missing number in {nums} is {result}.")
+print(f"The missing number in {nums} is {result}.")

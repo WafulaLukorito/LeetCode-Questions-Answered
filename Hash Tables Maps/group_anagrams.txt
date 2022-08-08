@@ -60,6 +60,22 @@ def group_anagrams(strs):
 
 
 
+
+def group_anagrams(strs):
+    if len(strs) <= 1:
+        return strs
+    
+    m = {}
+    for str in strs:
+        hs = "".join(sorted(str))
+        if hs in m:
+            m[hs].append(str)
+        else:
+            m[hs] = [str]
+    
+    return m.values()
+
+
 s = Solution()
 
 strs = ["cat", "dog", "god", "act", "tac", "man"]

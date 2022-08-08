@@ -21,8 +21,7 @@ You must implement a solution with a linear runtime complexity and use only co
 #     return (2*sum_set) - current_sum
 
 
-
-#*Second attempt
+# *Second attempt
 
 # def find_single(nums):
 #     set_sum = sum(set(nums))
@@ -31,7 +30,7 @@ You must implement a solution with a linear runtime complexity and use only co
 #     return 2*set_sum - current_sum
 
 
-#*Third attempt
+# *Third attempt
 
 # def find_single(nums):
 #     sum_set= sum(set(nums))
@@ -39,17 +38,16 @@ You must implement a solution with a linear runtime complexity and use only co
 
 #     return 2*sum_set - current_sum
 
-#*Whiteboarding Attempt
+# *Whiteboarding Attempt
 def find_single(nums):
-    sum_set = sum(set(nums))
+    my_set = set(nums)
+    intended_sum = 2 * (sum(my_set))
     current_sum = sum(nums)
-
-    return 2*sum_set - current_sum
-
-
+    single = intended_sum - current_sum
+    return single
 
 
-nums = [4,1,2,1,2]
+nums = [4, 1, 2, 1, 2]
 
 result = find_single(nums)
 

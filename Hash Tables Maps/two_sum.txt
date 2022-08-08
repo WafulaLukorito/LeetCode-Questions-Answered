@@ -11,13 +11,14 @@ You can return the answer in any order.
 """
 
 def two_sum(nums, target):
-    nums_to_index = {}
+    nums_to_index={}
 
     for i in range(0, len(nums)):
         goal = target - nums[i]
-        if goal in nums_to_index:
-            return nums_to_index[goal], i
-        nums_to_index[nums[i]]= i
+        if goal not in nums_to_index:
+            nums_to_index[goal] = i
+        return nums_to_index[goal], i
+
 
 
 

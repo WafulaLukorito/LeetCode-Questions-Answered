@@ -15,30 +15,21 @@
 #         nums_to_occurences[num]=1
 #     return False
 
-#*Second attempt
+# *Second attempt
+
+from collections import Counter
+
 
 def contains_duplicates(nums):
-    nums_to_number = {}
+    my_counter = Counter(nums)
     for num in nums:
-        if nums in nums_to_number:
+        if my_counter[num] > 1:
             return True
-        nums_to_number[num]=1
     return False
 
 
-#*Whiteboarding Attempt
-
-def contains_duplicates(nums):
-    nums_to_number = {}
-    for num in nums:
-        if num in nums_to_number:
-            return True
-        nums_to_number[num]=1
-    return False
-
-
-nums1 = [1,2,3,4,1]
-nums2=[1,2,3,4,5,6]
+nums1 = [1, 2, 3, 4, 1]
+nums2 = [1, 2, 3, 4, 5, 6]
 
 result1 = contains_duplicates(nums1)
 result2 = contains_duplicates(nums2)
@@ -47,3 +38,20 @@ print(f"It is {result1} that array {nums1} contains duplicates")
 print(f"It is {result2} that array {nums2} contains duplicates")
 
 
+def contains_dups(nums):
+    m = {}
+    for num in nums:
+        if num in m:
+            return True
+        m[num] = 1
+    return False
+
+
+nums1 = [1, 2, 3, 4, 1]
+nums2 = [1, 2, 3, 4, 5, 6]
+
+result1 = contains_dups(nums1)
+result2 = contains_dups(nums2)
+
+print(f"It is {result1} that array {nums1} contains duplicates")
+print(f"It is {result2} that array {nums2} contains duplicates")

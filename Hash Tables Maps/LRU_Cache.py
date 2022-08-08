@@ -9,7 +9,7 @@ int get(int key) Return the value of the key if the key exists, otherwise return
 void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
 #?The functions get and put must each run in O(1) average time complexity.
 
- 
+
 
 Example 1:
 
@@ -50,7 +50,7 @@ lRUCache.get(4);    // return 4
 #             return value
 #         else:
 #             return -1
-    
+
 #     def put (self, key: int, value: int) -> None:
 #         if key not in self.m:
 #             if len(self.deq) == self.c:
@@ -59,40 +59,41 @@ lRUCache.get(4);    // return 4
 #         else:
 #             self.deq.remove(key)
 
-#         self.m[key] = value 
+#         self.m[key] = value
 #         self.deq.append(key)
 
 
-#*-----2022 ATTEMPT--------------
+# *-----2022 ATTEMPT--------------
 from collections import deque
+
+
 class LRUCache:
-    def __init__(self, capacity: int):
+    def __init__(self, capacity):
         self.c = capacity
-        self.m = dict()
+        self.m = {}
         self.deq = deque()
 
-    def get(self, key: int, ) -> int:
+    def get(self, key):
         if key in self.m:
             value = self.m[key]
             self.deq.remove(key)
             self.deq.append(key)
             return value
-
         else:
             return -1
 
-    
-    def put(self, key:int, value:int)  -> None:
+    def put(self, key, value):
         if key in self.m:
+            self.m[key] = value
             self.deq.remove(key)
             self.deq.append(key)
-            self.m[key] = value
+
         else:
             if self.c == len(self.deq):
-                oldest=self.deq.popleft()
+                oldest = self.deq.popleft(key)
                 del self.m[oldest]
-                self.deq.append(key)
                 self.m[key] = value
+                self.m.append(key)
             else:
-                self.deq.append(key)
                 self.m[key] = value
+                self.m.append(key)

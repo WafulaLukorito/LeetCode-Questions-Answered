@@ -10,33 +10,26 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 #?Space Complexity: O(N)-- Due to usage of maps
 
 """
-
 def four_sum_ii(nums1, nums2, nums3, nums4):
-    answer = 0
+    res = 0
     m = {}
 
     for i in range(0, len(nums1)):
         x= nums1[i]
-        for j in range (0, len (nums2)):
+        for j in range(0, len(nums2)):
             y = nums2[j]
+            if (x+y) in m:
+                m[x+y] +=1
+            m[x+y] = 1
 
-            if (x+y) not in m:
-                m[x+y] = 0
-            m[x+y]+=1
-    
-    for i in range (0, len(nums3)):
-        x= nums3[i]
+    for i in range(0, len(nums3)):
+        x = nums3[i]
         for j in range (0, len(nums4)):
             y = nums4[j]
-
-            goal = -(x+y)
-            if goal in m:
-                answer +=m[goal]
-
-    return answer
-        
-
-
+            target = -(x+y)
+            if target in m:
+                res +=1
+    return res
 
 
 

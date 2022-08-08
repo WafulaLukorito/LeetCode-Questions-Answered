@@ -1,0 +1,11 @@
+"""Write a function remove_duplicates() which has one parameter: dupe_list.
+
+remove_duplicates() should return a list containing unique values in the same order as in dupe_list.
+    """
+def remove_duplicates(dupe_list):
+    new_list = []
+    for i in dupe_list:
+        if i not in new_list:
+            i.append(new_list)
+    return new_list
+
