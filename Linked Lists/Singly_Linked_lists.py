@@ -57,13 +57,12 @@
 #             self.head = temp.next
 #             temp = None
 #             return
-        
+
 #         while(temp.next.data != value_to_delete):
 #             temp = temp.next
 #         target_node = temp.next
 #         temp.next = target_node.next
 #         target_node.next = None
-
 
 
 # #Node structure: 5 => 1 => 3 => 7
@@ -86,16 +85,17 @@
 # LinkedList.printList(linked_list)
 
 
-#*------------SECOND ATTEMPT------------
+# *------------SECOND ATTEMPT------------
 # class Node:
 #     def __init__(self, value, next=None):
 #         self.value = value
 #         self.next_node = next
 
+
 # class LinkedList:
 #     def __init__(self, head_node=None):
 #         self.head_node = head_node
-    
+
 #     def add_node(self, value, pos):
 #         new_node = Node(value)
 #         if (pos == 0):
@@ -129,62 +129,54 @@
 #         while current:
 #             my_str += str(current.value) + " => "
 #             current = current.next_node
-#         print (my_str, "our head is :", self.head_node.value)
+#         print(my_str, "our head is :", self.head_node.value)
 
 
-#*--------WHITEBOARD ATTEMPT------
+# *--------WHITEBOARD ATTEMPT------
 class Node:
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
+
 class LinkedList:
     def __init__(self, head=None):
         self.head = head
 
-    def Stringify(self):
-        my_str = ""
-        current = self.head
-
-        while(current):
-            my_str += str(current.value) + " => "
-            current = current.next
-        print(my_str, "head is:", self.head.value)
-
-
-    def add_node(self, value, pos):
+    def add_node(self, value, pos=0):
         new_node = Node(value)
-        if (pos == 0):
+        if pos == 0:
             new_node.next = self.head
             self.head = new_node
-
         else:
-            count = 1
+            counter = 1
             current = self.head
-            while (count < pos):
+            while (counter < pos):
                 current = current.next
-                count += 1
-
+                counter += 1
             new_node.next = current.next
             current.next = new_node
 
-
     def delete_node(self, value):
         if self.head.value == value:
-            self.head = self.head.next
+            temp = self.head.next
+            self.head.next = None
+            self.head = temp
         else:
-
             current = self.head
-            while(current.next.value != value):
+            while (current.next.value != value):
                 current = current.next
-
             remove = current.next
             current.next = remove.next
             remove.next = None
 
-
-
-
+    def stringify(self):
+        my_str = ""
+        current = self.head
+        while (current):
+            my_str += str(current.value) + " => "
+            current = current.next
+        print(my_str, "the head node is: ", str(self.head.value))
 
 
 tail_node = Node(1000)
@@ -196,12 +188,164 @@ first_node = Node(5, second_node)
 
 llist = LinkedList(first_node)
 
-llist.add_node(666,0)
-llist.add_node(999,3)
+llist.add_node(666, 0)
+llist.add_node(999, 3)
 
 llist.delete_node(666)
 llist.delete_node(1000)
 llist.delete_node(5)
 llist.add_node("akili", 3)
 
-llist.Stringify()
+llist.stringify()
+
+
+# * -----------Longer Implementation---------
+# Singly linked List
+
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+    def get_value(self):
+        return self.value
+
+    def get_next(self):
+        return self.next
+
+    def set_next(self, new_next):
+        self.next = new_next
+
+    def __str__(self):
+        return str(self.value)
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def add_to_head(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.set_next(self.head)
+            self.head = new_node
+
+    def add_to_tail(self, value):
+        new_node = Node(value)
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.set_next(new_node)
+            self.tail = new_node
+
+    def remove_head(self):
+        if self.head is None:
+            return None
+        else:
+            value = self.head.get_value()
+            self.head = self.head.get_next()
+            return value
+
+    def remove_tail(self):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            while current.get_next() != self.tail:
+                current = current.get_next()
+            value = self.tail.get_value()
+            current.set_next(None)
+            self.tail = current
+            return value
+
+    def contains(self, value):
+        if self.head is None:
+            return False
+        else:
+            current = self.head
+            while current is not None:
+                if current.get_value() == value:
+                    return True
+                current = current.get_next()
+            return False
+
+    def get_max(self):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            max = self.head.get_value()
+            while current is not None:
+                if current.get_value() > max:
+                    max = current.get_value()
+                current = current.get_next()
+            return max
+
+    def get_min(self):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            min = self.head.get_value()
+            while current is not None:
+                if current.get_value() < min:
+                    min = current.get_value()
+                current = current.get_next()
+            return min
+
+    def get_size(self):
+        if self.head is None:
+            return 0
+        else:
+            current = self.head
+            count = 0
+            while current is not None:
+                count += 1
+                current = current.get_next()
+            return count
+
+    def __str__(self):
+        if self.head is None:
+            return ''
+        else:
+            current = self.head
+            string = ''
+            while current is not None:
+                string += str(current.get_value()) + ' '
+                current = current.get_next()
+            return string
+
+    def __len__(self):
+        return self.get_size()
+
+    def __getitem__(self, index):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            count = 0
+            while current is not None:
+                if count == index:
+                    return current.get_value()
+                current = current.get_next()
+                count += 1
+            return None
+
+    def __setitem__(self, index, value):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            count = 0
+            while current is not None:
+                if count == index:
+                    current.set_value(value)
+                    return
+                current = current.get_next()
+                count += 1
+            return None
