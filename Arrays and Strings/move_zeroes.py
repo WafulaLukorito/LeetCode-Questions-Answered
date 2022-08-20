@@ -28,3 +28,12 @@ def move_zeroes(nums):
 
 
 print(move_zeroes(nums))
+
+
+people = [1, 3, 4, 1, 9, 45,  3, 222, 1, 1, 65]
+pipsort = sorted(people)
+print(people.count(1))
+print(people.index(4))
+people.sort()
+print(people)
+print(pipsort)

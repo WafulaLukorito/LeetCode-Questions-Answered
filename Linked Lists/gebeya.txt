@@ -1,0 +1,6 @@
+#Write SQL querry to extractthe number of parts (vehicle_part) and suppliers(supplier) per vehicle, for vehiles with 2 or more suppliers.
+
+#SQL Requests
+
+#1.
+SELECT COUNT(DISTINCT vehicle_part.vehicle_id) AS vehicle_count, COUNT(DISTINCT supplier.id) AS supplier_count
