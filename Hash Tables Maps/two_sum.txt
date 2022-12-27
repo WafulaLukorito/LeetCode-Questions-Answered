@@ -11,18 +11,13 @@ You can return the answer in any order.
 """
 
 def two_sum(nums, target):
-    nums_to_index={}
-
-    for i in range(0, len(nums)):
+    num_to_index= {}
+    for i in range (len(nums)-1):
         goal = target - nums[i]
-        if goal not in nums_to_index:
-            nums_to_index[goal] = i
-        return nums_to_index[goal], i
-
-
-
-
-
+        if goal in dict:
+            return (i, num_to_index[goal])
+        num_to_index[num]=i
+    return(None, None)
 
 
 nums= [3,3]
@@ -31,3 +26,45 @@ target = 6
 result = two_sum(nums, target)
 
 print (f"The numbers that add up to {target} can be found in indices {result[0]} and {result[1]}.")
+
+#Javascript
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let numToIndex = {};
+    for (let i = 0; i < nums.length; i++) {
+        let goal = target - nums[i];
+        if (goal in numToIndex) {
+            return [i, numToIndex[goal]];
+        }
+        numToIndex[nums[i]] = i;
+    }
+    return null;
+};
+
+var nums = [3,3];
+var target = 6;
+
+var result = twoSum(nums, target);
+
+var twoSum = function (nums, target){
+    numToIndex = {};
+    for (let i = 0; i <length(nums), i++){
+        goal = target - nums[i];
+        if (goal in numToIndex){
+            return (i, numToIndex[nums[i]]);
+        }
+        numToIndex[nums[i]] = i;
+    }
+    return null;
+};
+
+var nums = [3,4,5]
+var target = 8
+
+var result = twoSum(nums, target)
+console.log(result)

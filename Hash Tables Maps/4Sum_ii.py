@@ -4,11 +4,19 @@ Given four integer arrays nums1, nums2, nums3, and nums4 all of length n, return
 0 <= i, j, k, l < n
 nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 
-#? Time Complexity: O(N^2)--- N is the maximum size of the 4 input arrays. We do a nested loop twice.
-
-#?Space Complexity: O(N)-- Due to usage of maps
-
+Leetcode: https://leetcode.com/problems/4sum-ii/
+Leetcode Number: 454
+Difficulty: Medium
+Category: Hash Tables Maps
 """
+
+# ? Time Complexity: O(N^2)--- N is the maximum size of the 4 input arrays. We do a nested loop twice.
+
+# ?Space Complexity: O(N)-- Due to usage of maps
+
+# ? Approach: We can use a map to store the sum of the first two arrays. Then we can iterate through the last two arrays and check if the sum of the last two arrays is equal to the negative of the sum of the first two arrays. If it is, we can increment the answer by the number of times the sum of the first two arrays occurs.
+
+
 # def four_sum_ii (nums1, nums2, nums3, nums4):
 #     m = {}
 #     answer = 0
@@ -33,26 +41,46 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 #     return answer
 
 
+# def four_sum_ii(nums1, nums2, nums3, nums4):
+#     sum_map = {}
+#     count = 0
+#     len1, len2, len3, len4 = len(nums1), len(nums2), len(nums3), len(nums4)
+#     for i in range(len(nums1)):
+#         for j in range(len1):
+#             sum = nums1[i]+nums2[j]
+#             if sum not in sum_map:
+#                 sum_map[sum] = 1
+#             else:
+#                 sum_map[sum] += 1
+#     for i in range(len(nums3)):
+#         for j in range(len(nums4)):
+#             goal = -(nums3[i]+nums4[j])
+#             if goal in sum_map:
+#                 count += sum_map[goal]
+#     return count
+
 def four_sum_ii(nums1, nums2, nums3, nums4):
+    sum_map = {}
     res = 0
-    m = {}
+    len1, len2, len3, len4 = len(nums1), len(
+        nums2), len(nums3), len(nums4)
 
-    for i in range(0, len(nums1)):
+    for i in range(len1):
         x = nums1[i]
-        for j in range(0, len(nums2)):
+        for j in range(len2):
             y = nums2[j]
-            if (x+y) in m:
-                m[x+y] += 1
-            m[x+y] = 1
+            my_sum = x+y
+            if my_sum in sum_map:
+                sum_map[my_sum] += 1
+            sum_map[my_sum] = 1
 
-    for i in range(0, len(nums3)):
+    for i in range(len3):
         x = nums3[i]
-        for j in range(0, len(nums4)):
+        for j in range(len4):
             y = nums4[j]
-            target = -(x+y)
-            if target in m:
-                res += 1
-
+            goal = - (x+y)
+            if goal in sum_map:
+                res += sum_map[goal]
     return res
 
 

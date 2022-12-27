@@ -5,6 +5,13 @@ Given an array of integers nums and an integer target, return indices of the tw
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
 You can return the answer in any order.
+
+LeetCode: https://leetcode.com/problems/two-sum/
+LeetCode Number: 1
+Difficulty: Easy
+Topic: Hash Tables, Maps
+Company: Amazon, Apple, Facebook, Google, Microsoft, Uber, Yahoo
+
 #? Time O(N): We do a loop over array of size n
 #? Space O(N): We create a map to hold a value alongside the index
 """
@@ -63,7 +70,7 @@ You can return the answer in any order.
 
 # result = two_sum(nums, target)
 
-#print (f"The numbers that add up to {target} can be found in indices {result[0]} and {result[1]}.")
+# print (f"The numbers that add up to {target} can be found in indices {result[0]} and {result[1]}.")
 
 
 # * 2022 Solution
@@ -79,18 +86,41 @@ You can return the answer in any order.
 #             return nums_to_index[goal], i
 #         nums_to_index[nums[i]] = i
 
-def two_sum(nums, target):
-    nums_to_index = {}
+# def two_sum(nums, target):
+#     num_to_index = {}
+#     for num in nums:
+#         goal = target - num
+#         if goal in num_to_index:
+#             return num_to_index[goal], nums.index(num)
+#         num_to_index[num] = nums.index(num)
+#     return (None, None)
 
-    for i in range(0, len(nums)):
-        goal = target - nums[i]
-        if goal in nums_to_index:
-            return nums_to_index[goal], i
-        nums_to_index[nums[i]] = i
+
+# def two_sum(nums, target):
+#     # ? Create a dictionary to store the values and their indices
+#     dict = {}
+#     # ? Loop over the array
+#     for i in range(len(nums)):
+#         # ? Check if the difference between the target and the current value is in the dictionary
+#         if target - nums[i] in dict:
+#             # ? If it is, return the indices of the current value and the value in the dictionary
+#             return (i, dict[target - nums[i]]
+#         # ? If it isn't, add the current value to the dictionary
+#         dict[nums[i]] = i
+
+
+def two_sum(nums, TARGET):
+    num_to_index = {}
+    for i in range(len(nums)-1):
+        goal = TARGET - nums[i]
+        if goal in num_to_index:
+            return (i, num_to_index[goal])
+        num_to_index[nums[i]] = i
+    return (None, None)
 
 
 nums = [5, 6, 4, 7, 2, 9]
-target = 6
+target = 11
 
 result = two_sum(nums, target)
 

@@ -11,25 +11,56 @@ nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 
 """
 def four_sum_ii(nums1, nums2, nums3, nums4):
+    #? Create a map to store the sum of the first two arrays
+    sum_map = {}
+    #? Loop through the first two arrays
+    for i in range(len(nums1)):
+        for j in range(len(nums2)):
+            #? Calculate the sum of the first two arrays
+            sum = nums1[i] + nums2[j]
+            #? If the sum is not in the map, add it
+            if sum not in sum_map:
+                sum_map[sum] = 1
+            #? If the sum is in the map, increment it
+            else:
+                sum_map[sum] += 1
+    #? Create a variable to store the number of tuples
+    count = 0
+    #? Loop through the last two arrays
+    for i in range(len(nums3)):
+        for j in range(len(nums4)):
+            #? Calculate the sum of the last two arrays
+            sum = nums3[i] + nums4[j]
+            #? If the sum is in the map, increment the count by the value of the sum
+            if -sum in sum_map:
+                count += sum_map[-sum]
+    #? Return the number of tuples
+    return count
+
+def 4Sum_ii (nums1, nums2, nums3, nums4):
+    sum_map  = {}
     res = 0
-    m = {}
+    len1, len2, len3, len4 = length(nums1), length(nums2), length(nums3), length(nums4)
 
-    for i in range(0, len(nums1)):
-        x= nums1[i]
-        for j in range(0, len(nums2)):
-            y = nums2[j]
-            if (x+y) in m:
-                m[x+y] +=1
-            m[x+y] = 1
-
-    for i in range(0, len(nums3)):
+    for i in range (len1):
+        x = nums1(i)
+        for j in range (len2):
+            y = nums2(j)
+            my_sum = x+y
+            if my_sum in sum_map:
+                sum_map[my_sum] +=1
+            sum_map[my_sum] = 1
+        
+    for i in range (len3):
         x = nums3[i]
-        for j in range (0, len(nums4)):
+        for j in range (len4):
             y = nums4[j]
-            target = -(x+y)
-            if target in m:
-                res +=1
+            goal = - (x+y)
+            if goal in sum_map:
+                res += sum_map[goal]
     return res
+
+
 
 
 
@@ -41,3 +72,58 @@ nums4 = [0, 2]
 result = four_sum_ii(nums1, nums2, nums3, nums4)
 
 print(result)
+
+#JavaScript
+var fourSumCount = function(nums1, nums2, nums3, nums4) {
+    let map = new Map();
+    let count = 0;
+    for (let i = 0; i < nums1.length; i++) {
+        for (let j = 0; j < nums2.length; j++) {
+            let sum = nums1[i] + nums2[j];
+            if (map.has(sum)) {
+                map.set(sum, map.get(sum) + 1);
+            } else {
+                map.set(sum, 1);
+            }
+        }
+    }
+    for (let i = 0; i < nums3.length; i++) {
+        for (let j = 0; j < nums4.length; j++) {
+            let sum = nums3[i] + nums4[j];
+            if (map.has(-sum)) {
+                count += map.get(-sum);
+            }
+        }
+    }
+    return count;
+};
+
+var fourSumCount = function(nums1, nums2, nums3, nums4):
+    let sumMap = {};
+    let res = 0;
+
+    for (let i = 0; i<nums1.length, i++){
+        for (let j = 0; j<nums2.length, j++){
+            let mySum = nums1[i]+nums2[j]
+            if (mySum in sumMap){
+                sumMap[mySum]++;
+            
+}
+sumMap[mySum]= 1;
+}
+for (let i =0; i< nums3.length; i++){
+    for (let j = 0; j < nums4.length; j++){
+        let goal = -(nums3[i]+nums4[j])
+        if (goal in sumMap){
+            res += sumMap[goal]
+        }
+    }
+}
+return res
+}
+
+
+
+
+
+
