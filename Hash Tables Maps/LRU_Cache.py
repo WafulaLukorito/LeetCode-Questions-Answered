@@ -9,7 +9,9 @@ int get(int key) Return the value of the key if the key exists, otherwise return
 void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
 #?The functions get and put must each run in O(1) average time complexity.
 
-
+LeetCode 146. LRU Cache
+LeetCode URL: https://leetcode.com/problems/lru-cache/
+Difficulty: Medium
 
 Example 1:
 
@@ -33,7 +35,8 @@ lRUCache.get(4);    // return 4
 
 '''
 
-#from collections import deque
+
+# from collections import deque
 
 # class  LRUCache:
 
@@ -64,36 +67,43 @@ lRUCache.get(4);    // return 4
 
 
 # *-----2022 ATTEMPT--------------
+
 from collections import deque
 
 
 class LRUCache:
+
     def __init__(self, capacity):
-        self.c = capacity
-        self.m = {}
+        self.capacity = capacity
+        self.cache = {}
         self.deq = deque()
 
     def get(self, key):
-        if key in self.m:
-            value = self.m[key]
+        if key in self.cache:
+            value = self.cache[key]
             self.deq.remove(key)
             self.deq.append(key)
             return value
-        else:
-            return -1
+        return -1
 
     def put(self, key, value):
-        if key in self.m:
-            self.m[key] = value
+        if key in self.cache:
+            self.cache[key] = value
             self.deq.remove(key)
             self.deq.append(key)
-
         else:
-            if self.c == len(self.deq):
-                oldest = self.deq.popleft(key)
-                del self.m[oldest]
-                self.m[key] = value
-                self.m.append(key)
-            else:
-                self.m[key] = value
-                self.m.append(key)
+            if len(self.deq) == self.capacity:
+                oldest = self.deq.popleft()
+                del self.cache[oldest]
+            self.cache[key] = value
+            self.deq.append(key)
+
+
+# *----------------------*
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+# *----------------------*

@@ -4,6 +4,10 @@ Given an array nums of size n, return the majority element.
 
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
+Leetcode: https://leetcode.com/problems/majority-element/
+Difficulty: Easy
+
+
 #? Time Complexity: O(2*N) = O(N)---One pass to assign value, separate pass again
 
 #?Space: O(N)--- create a map to track occurrence
@@ -11,6 +15,28 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 #! Use m.get!!!
 
 """
+
+import operator
+from itertools import accumulate, combinations, combinations_with_replacement, permutations
+from collections import Counter
+from collections import namedtuple
+
+
+def majority_element2(nums):
+    num_to_freq = {}
+    numslen = len(nums)
+    for num in nums:
+        if num not in num_to_freq:
+            num_to_freq[num] = 1
+        else:
+            num_to_freq[num] += 1
+            if num_to_freq[num] > numslen/2:
+                return num
+
+
+nums = [2, 2, 1, 1, 1, 2, 2]
+result = majority_element2(nums)
+print(f"2. The majority element in array {nums} is {result} ")
 
 
 # def majority_element(nums):
@@ -57,11 +83,6 @@ The majority element is the element that appears more than ⌊n / 2⌋ times. Yo
 #     for num in nums:
 #         if m[num] > len(nums)//2:
 #             return num
-
-from collections import namedtuple
-from collections import Counter
-from itertools import accumulate, combinations, combinations_with_replacement, permutations
-import operator
 
 
 def majority_element(nums):

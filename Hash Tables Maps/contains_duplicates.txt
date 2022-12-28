@@ -20,3 +20,27 @@ nums2=[1,2,3,4,5,6]
 
 result1 = contains_duplicates(nums1)
 result2 = contains_duplicates(nums2)
+
+#JavaScript
+
+var containsDuplicates = function(nums) {
+    let numsToNumber = {}
+    for (let num of nums){
+        if (num in numsToNumber){
+            return true
+        }
+        numsToNumber[num] = 1
+    }
+    return false
+};
+
+#using set
+var containsDuplicates(nums){
+    return new Set(nums).size !== nums.length
+}
+
+nums1= [1,2,3,4,1]
+nums2=[1,2,3,4,5,6]
+
+console.log(containsDuplicates(nums1))
+console.log(containsDuplicates(nums2))

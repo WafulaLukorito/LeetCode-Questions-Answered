@@ -1,6 +1,12 @@
 
 """ Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
+# Leetcode 217. Contains Duplicate
+# https://leetcode.com/problems/contains-duplicate/
+# Topics: Array, Hash Table
+# Complexity: Time: O(N)--- N --> Length of input array
+# Difficulty: Easy
+
  #? Can use three methods:
  1. sort array and check if nums[i] == nums [i-1]
  2. Create set and check if set is equal to array.

@@ -59,7 +59,14 @@ def group_anagrams(strs):
     return d.values()
 
 
+def group_anagrams (strs):
+    if len(strs) <2:
+        return [strs]
+    
+    my_map = {}
 
+    for s in strs:
+        s_hashed
 
 def group_anagrams(strs):
     if len(strs) <= 1:
@@ -75,6 +82,32 @@ def group_anagrams(strs):
     
     return m.values()
 
+def group_anagrams(strs):
+    if len(strs) < 2:
+        return strs
+    
+    m = {}
+    for s in strs:
+        s_hashed = "".join(sorted(s))
+        if s_hashed not in m:
+            m[s_hashed] = [s]
+        else:
+            m[s_hashed].append(s)
+    return m.values()
+
+def group_anagrams(strs):
+    if len(strs) < 2:
+        return strs
+    
+    m = {}
+    for s in strs:
+        s_hashed = "".join(s)
+        if s_hashed not in m:
+            m[s_hashed] = [s]
+        else:
+            m[s_hashed].append(s)
+    return m.values
+
 
 s = Solution()
 
@@ -83,3 +116,22 @@ strs = ["cat", "dog", "god", "act", "tac", "man"]
 result = s.group_anagrams(strs)
 
 print (result)
+
+#JavaScript
+
+var groupAnagrams = function(strs) {
+    if (strs.length < 2) return [strs];
+    
+    let m = {};
+    
+    for (let s of strs) {
+        let s_hashed = s.split('').sort().join('');
+        if (s_hashed in m) {
+            m[s_hashed].push(s);
+        } else {
+            m[s_hashed] = [s];
+        }
+    }
+    
+    return Object.values(m);
+};

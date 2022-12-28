@@ -3,6 +3,22 @@
 
    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once
 
+   #Example 1:
+    Input: strs = ["eat","tea","tan","ate","nat","bat"]
+    Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+    #Example 2:
+    Input: strs = [""]
+    Output: [[""]]
+    #Example 3:
+    Input: strs = ["a"]
+    Output: [["a"]]
+
+   LeetCode 49. Group Anagrams
+    https://leetcode.com/problems/group-anagrams/
+    # Topics: Hash Table, String
+    Complexity: Time: O(N*M*Log(M))--- N --> Length of input array
+    Difficulty: Medium
+
     #? Time Complexity O(N*M*Log(M))---
     N --> Length of input array
     M --> Length of biggest string in array
@@ -77,23 +93,49 @@
 #         res.append(item)
 #     return res
 
+# def group_anagrams(strs):
+#     if len(strs) <= 1:
+#         return strs
+
+#     m = {}
+#     for str in strs:
+#         hs = "".join(sorted(str))
+#         if hs in m:
+#             m[hs].append(str)
+#         else:
+#             m[hs] = [str]
+
+#     return m.values()
+
 def group_anagrams(strs):
-    if len(strs) <= 1:
+    if len(strs) < 2:
         return strs
 
     m = {}
-    for str in strs:
-        hs = "".join(sorted(str))
-        if hs in m:
-            m[hs].append(str)
+    for s in strs:
+        s_hashed = "".join(sorted(s))
+        if s_hashed not in m:
+            m[s_hashed] = [s]
         else:
-            m[hs] = [str]
+            m[s_hashed].append(s)
+    return list(m.values())
 
-    return m.values()
 
-
-strs = ["cat", "dog", "god", "act", "tac", "man"]
+strs = ["cat", "dog", "god", "act", "tac"]
 
 result = group_anagrams(strs)
 
 print(result)
+
+
+# strs = ["cat", "dog", "god", "act", "tac", "man"]
+
+# result = str(group_anagrams(strs))
+
+# print(result)
+
+# strs = ["cat", "dog", "god", "act", "tac", "man"]
+
+# result = group_anagrams(strs)
+
+# print(result)
