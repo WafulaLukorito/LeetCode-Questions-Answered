@@ -148,3 +148,214 @@ class LinkedList:
             return None
 
 
+#JavaScript
+
+class Node {
+    constructor(value, next = null) {
+        this.value = value;
+        this.next = next;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    add_to_head(value) {
+        let new_node = new Node(value);
+        if (this.head === null) {
+            this.head = new_node;
+            this.tail = new_node;
+        } else {
+            new_node.next = this.head;
+            this.head = new_node;
+        }
+    }
+
+    add_to_tail(value) {
+        let new_node = new Node(value);
+        if (this.tail === null) {
+            this.head = new_node;
+            this.tail = new_node;
+        } else {
+            this.tail.next = new_node;
+            this.tail = new_node;
+        }
+    }
+
+    remove_head() {
+        if (this.head === null) {
+            return null;
+        } else {
+            let value = this.head.value;
+            this.head = this.head.next;
+            return value;
+        }
+    }
+
+    remove_tail() {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            while (current.next !== this.tail) {
+                current = current.next;
+            }
+            let value = this.tail.value;
+            current.next = null;
+            this.tail = current;
+            return value;
+        }
+    }
+
+    contains(value) {
+        if (this.head === null) {
+            return false;
+        } else {
+            let current = this.head;
+            while (current !== null) {
+                if (current.value === value) {
+                    return true;
+                }
+                current = current.next;
+            }
+            return false;
+        }
+    }
+
+    get_max() {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let max = this.head.value;
+            while (current !== null) {
+                if (current.value > max) {
+                    max = current.value;
+                }
+                current = current.next;
+            }
+            return max;
+        }
+    }
+
+    get_min() {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let min = this.head.value;
+            while (current !== null) {
+                if (current.value < min) {
+                    min = current.value;
+                }
+                current = current.next;
+            }
+            return min;
+        }
+    }
+
+    get_size() {
+        if (this.head === null) {
+            return 0;
+        } else {
+            let current = this.head;
+            let count = 0;
+            while (current !== null) {
+                count += 1;
+                current = current.next;
+            }
+            return count;
+        }
+    }
+
+    print() {
+        if (this.head === null) {
+            return '';
+        } else {
+            let current = this.head;
+            let string = '';
+            while (current !== null) {
+                string += current.value + ' ';
+                current = current.next;
+            }
+            return string;
+        }
+    }
+
+    get(index) {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let count = 0;
+            while (current !== null) {
+                if (count === index) {
+                    return current.value;
+                }
+                current = current.next;
+                count += 1;
+            }
+            return null;
+        }
+    }
+
+    set(index, value) {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let count = 0;
+            while (current !== null) {
+                if (count === index) {
+                    current.value = value;
+                    return;
+                }
+                current = current.next;
+                count += 1;
+            }
+            return null;
+        }
+    }
+
+    insert(index, value) {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let count = 0;
+            while (current !== null) {
+                if (count === index - 1) {
+                    let new_node = new Node(value);
+                    new_node.next = current.next;
+                    current.next = new_node;
+                    return;
+                }
+                current = current.next;
+                count += 1;
+            }
+            return null;
+        }
+    }
+
+    remove(index) {
+        if (this.head === null) {
+            return null;
+        } else {
+            let current = this.head;
+            let count = 0;
+            while (current !== null) {
+                if (count === index - 1) {
+                    current.next = current.next.next;
+                    return;
+                }
+                current = current.next;
+                count += 1;
+            }
+            return null;
+        }
+    }
+}
+
