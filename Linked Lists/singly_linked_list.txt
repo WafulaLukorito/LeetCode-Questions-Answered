@@ -359,3 +359,10 @@ class LinkedList {
     }
 }
 
+
+
+#Python 
+
+class Node:
+    def __init__(self, data):
+        
