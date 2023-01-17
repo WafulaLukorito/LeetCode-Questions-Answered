@@ -365,4 +365,238 @@ class LinkedList {
 
 class Node:
     def __init__(self, data):
-        
+        self.data=data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def insert_node(self, value_to_insert, pos=None):
+        target = Node(value_to_insert)
+        if not pos:
+            if (self.head == None):
+                self.head=target
+                return
+            else:
+                temp=self.head
+                while (temp.next):
+                    temp = temp.next
+                temp.next = target
+
+        elif (pos==0):
+            target.next = self.head
+            self.head= target
+            return
+        else:
+            def getPrev(pos):
+                count = 1
+                temp = self.head
+                while (count < pos):
+                    temp = temp.next
+                    count+=1
+                return temp
+
+            prev_node = getPrev(pos)
+            new_next=prev_node.
+            
+            prev_node.next =target
+            target.next = new_next
+            return
+
+    def delete_node(self, value_to_delete):
+        if (self.head.data==value_to_delete):
+            temp=self.head.next
+            self.head.next=None
+            self.head=temp
+            return
+        else:
+            temp = self.head
+            while (temp.next.data != value_to_delete):
+                temp=temp.next
+            target_node = temp.next
+            temp.next=target_node.next
+            target_node.next = None
+            return
+        return ("value to delete not found")
+
+    def __str__(self):
+        current = self.head
+        my_str=""
+        while current:
+            if not current.next:
+                my_str+=str(current.data)
+            else:
+                my_str+=str(current.data)+" => "
+                current = current.next
+
+        return my_str
+
+
+    def get_max(self):
+        current = self.head
+        max = self.head.data
+        while current:
+            if current.data > max:
+                max = current.data
+            current = current.next
+        return max
+    
+    def get_min(self):
+        current = self.head
+        min = self.head.data
+        while current:
+            if current.data < min:
+                min = current.data
+            current = current.next
+        return min
+
+    def get_size(self):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        return count
+    
+    def get(self, index):
+        current = self.head
+        count = 0
+        while current:
+            if count == index:
+                return current.data
+            current = current.next
+            count += 1
+        return None
+    
+
+#JavaScript
+
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList{
+    constructor() {
+        this.head = null;
+    }
+
+    insert_node(value_to_insert, pos = null) {
+        let target = new Node(value_to_insert);
+        if (!pos) {
+            if (!this.head) {
+                this.head = target;
+                return;
+            } else {
+                let temp = this.head;
+                while (temp.next) {
+                    temp = temp.next;
+                }
+                temp.next = target;
+            }
+        } else if (pos === 0) {
+            target.next = this.head;
+            this.head = target;
+            return;
+        } else {
+            function getPrev(pos) {
+                let count = 1;
+                let temp = this.head;
+                while (count < pos) {
+                    temp = temp.next;
+                    count += 1;
+                }
+                return;
+            }
+
+            let prev_node = getPrev(pos);
+            let new_next = prev_node.next;
+            prev_node.next = target;
+            target.next = new_next;
+            return;
+        }
+    }
+
+    delete_node(value_to_delete) {
+        if (this.head.data === value_to_delete) {
+            let temp = this.head.next;
+            this.head.next = null;
+            this.head = temp;
+            return;
+        } else {
+            let temp = this.head;
+            while (temp.next.data !== value_to_delete) {
+                temp = temp.next;
+            }
+            let target_node = temp.next;
+            temp.next = target_node.next;
+            target_node.next = null;
+            return;
+        }
+        return "value to delete not found";
+    }
+
+    toString() {
+        let current = this.head;
+        let my_str = "";
+        while (current) {
+            if (!current.next) {
+                my_str += current.data;
+            } else {
+                my_str += current.data + " => ";
+                current = current.next;
+            }
+        }
+        return my_str;
+    }
+
+    get_max() {
+        let current = this.head;
+        let max = this.head.data;
+        while (current) {
+            if (current.data > max) {
+                max = current.data;
+            }
+            current = current.next;
+        }
+        return max;
+    }
+
+    get_min() {
+        let current = this.head;
+        let min = this.head.data;
+        while (current) {
+            if (current.data < min) {
+                min = current.data;
+            }
+            current = current.next;
+        }
+        return min;
+}
+
+    get_size() {
+        let current = this.head;
+        let count = 0;
+        while (current) {
+            count += 1;
+            current = current.next;
+        }
+        return count;
+    }
+
+    get(index) {
+        let current = this.head;
+        let count = 0;
+        while (current) {
+            if (count === index) {
+                return current.data;
+            }
+            current = current.next;
+            count += 1;
+        }
+        return null;
+    }
+}
