@@ -17,6 +17,15 @@ Company: Amazon, Apple, Facebook, Google, Microsoft, Uber, Yahoo
 """
 
 
+def two_sum(nums, target):
+    my_dict = {}
+    for num in nums:
+        goal = target - num
+        if goal in my_dict:
+            return (my_dict[goal], nums.index(num))
+        my_dict[num] = nums.index(num)
+
+
 # def two_sum(nums, target):
 #     my_dict = {}
 #     for num in nums:

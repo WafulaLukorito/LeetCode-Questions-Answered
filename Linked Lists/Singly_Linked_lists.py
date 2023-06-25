@@ -350,12 +350,11 @@
 #                 count += 1
 #             return None
 
-
-
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        
     def __str__(self):
         return str(self.data)
 
@@ -363,11 +362,99 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        
+    def get_size(self):
+        if not self.head:
+            return 0
+        current = self.head
+        count = 1
+        while current.next:
+            count +=1
+            current = current.next
+        return count
     
+    def insert_node (self, value_to_insert, pos=None):
+       size = self.get_size
+       if (pos is not None) and ((pos>size) or (pos < o)):
+           print ("Position out of bounds")
+           return
+
+       elif (pos==0):
+           target = Node(value_to_insert)
+           if self.head is None:
+               self.head = target
+               return
+           else:
+               target.next = self.head
+               self.head = target
+               return
+       else:
+           target = Node(value_to_insert)
+           current = self.head
+           count = 1
+           while count < pos:
+               current = current.next
+               count +=1
+            new_next = current.next
+            current.next = target
+            target.next = new_next
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+
+                def __str__(self):
+                    return str(self.data)
+
+
+            class LinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def insert_node(self, value_to_insert, pos=None):
+                    size = self.get_size()
+                    if (pos is not None) and ((pos > size) or (pos < 0)):
+                        print("Out of bounds!")
+                        return
+                    target = Node(value_to_insert)
+                    if pos is None:
+                        current = self.head
+                        if current is None:
+                            self.head = target
+                            return
+
+                def delete_node(self, value_to_delete):
+                    if self.head.data == value_to_delete:
+                        self.head = self.head.next
+                        return
+                    current = self.head
+                    while current.next:
+                        if current.next.data == value_to_delete:
+                            to_delete = current.next
+                            current.next = current.next.next
+                            to_delete.next = None
+                            return
+                    return "Value not found"
+                        
+                    
+                    
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+    def __str__(self):
+        return str(self.data)
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
     def insert_node(self, value_to_insert, pos=None):
         size = self.get_size()
-        if (pos is not None) and ((pos > size) or (pos<0)):
-            print ("Out of bounds!")
+        if (pos is not None) and ((pos > size) or (pos < 0)):
+            print("Out of bounds!")
             return
         target = Node(value_to_insert)
         if pos is None:
@@ -378,40 +465,40 @@ class LinkedList:
             else:
                 while (current.next is not None):
                     current = current.next
-                current.next= target
+                current.next = target
                 return
-        
-        elif (pos==0):
-            target.next=self.head
-            self.head=target
+
+        elif (pos == 0):
+            target.next = self.head
+            self.head = target
             return
         else:
             count = 1
             temp = self.head
             while (count < pos):
                 temp = temp.next
-                count+=1
-            new_next=temp.next
-            temp.next=target
-            target.next=new_next
+                count += 1
+            new_next = temp.next
+            temp.next = target
+            target.next = new_next
             return
 
     def delete_node(self, value_to_delete):
         if (self.head.data == value_to_delete):
-            current=self.head
-            self.head=self.head.next
-            current.next=None
+            current = self.head
+            self.head = self.head.next
+            current.next = None
             return
         else:
             current = self.head
             while (current.next.data != value_to_delete):
-                current=current.next
+                current = current.next
                 if current.next == None:
-                    print ("Value does not exist!")
+                    print("Value does not exist!")
                     return
             to_delete = current.next
             new_next = to_delete.next
-            current.next=new_next
+            current.next = new_next
             to_delete.next = None
 
     def get_size(self):
@@ -420,27 +507,27 @@ class LinkedList:
         counter = 0
         current = self.head
         while current:
-            counter+=1
-            current=current.next
+            counter += 1
+            current = current.next
         return counter
-    
+
     def find_max(self):
         if not self.head:
             return -1
         current = self.head
         my_max = self.head.data
         while current:
-            my_max=max(my_max,current.data)
+            my_max = max(my_max, current.data)
             current = current.next
         return my_max
-    
+
     def find_min(self):
         if not self.head:
             return -1
         current = self.head
         my_min = self.head.data
         while current:
-            my_min=min(my_min,current.data)
+            my_min = min(my_min, current.data)
             current = current.next
         return my_min
 
@@ -449,9 +536,9 @@ class LinkedList:
         current = self.head
         while current:
             if not current.next:
-                my_str+=str(current.data)
+                my_str += str(current.data)
             else:
-                my_str+=str(current.data)+" => "
+                my_str += str(current.data)+" => "
             current = current.next
         return f"{my_str} \n its size is {self.get_size()} \n The head is {self.head} \n The max value is {self.find_max()} \n The min value is {self.find_min()}"
 
@@ -464,6 +551,7 @@ myLinkedList.insert_node(4, 0)
 myLinkedList.insert_node(5, 2)
 myLinkedList.insert_node(6, 4)
 myLinkedList.insert_node(7, 32)
+
 
 myLinkedList.delete_node(6)
 myLinkedList.delete_node(55)

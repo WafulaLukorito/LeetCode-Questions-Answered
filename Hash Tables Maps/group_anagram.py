@@ -54,6 +54,21 @@
 
 # *** Another Very simple solution ***
 
+
+def group_anagrams(s):
+    ln = len(strs):
+        if ln <= 1:
+            return [strs]
+        d = {}
+        for i in strs:
+            s = "".join(sorted(i))
+            if s in d.keys():
+                d[s].append(i)
+            else:
+                d[s] = [i]
+
+        return d.values()
+
 # def group_anagrams(s):
 #     ln  = len(strs)
 #     if ln <=1:

@@ -17,6 +17,28 @@ Category: Hash Tables Maps
 # ? Approach: We can use a map to store the sum of the first two arrays. Then we can iterate through the last two arrays and check if the sum of the last two arrays is equal to the negative of the sum of the first two arrays. If it is, we can increment the answer by the number of times the sum of the first two arrays occurs.
 
 
+def four_sum_ii(nums1, nums2, nums3, nums4):
+    m = {}
+    answer = 0
+
+    len1, len2, len3, len4 = len(nums1), len(nums2), len(nums3), len(nums4)
+
+    for i in range(0, len1):
+        x = nums1[i]
+        for j in range(0, len2):
+            y = nums2[j]
+            if (x+y) in m:
+                m[x+y] += 1
+
+    for i in range(0, len3):
+        x = nums3[i]
+        for j in range(0, len4):
+            y = nums4[j]
+            target = -(x+y)
+            if target in m:
+                answer += m[target]
+    return answer
+
 # def four_sum_ii (nums1, nums2, nums3, nums4):
 #     m = {}
 #     answer = 0

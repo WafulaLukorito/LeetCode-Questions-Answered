@@ -1,6 +1,69 @@
 #Singly linked List
 
 class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+
+    def get_value(self):
+        return self.value
+    
+    def get_next(self):
+        return self.next
+    
+    def __str__(self):
+        return str(self.value)
+
+    def set_value(self, value):
+        self.value = value
+
+    def set_next(self, new_next):
+        self.next= new_next
+
+class LinkedList:
+    def __init__(self):
+        self.head = None:
+        self.tail = None
+
+    def get_size(self):
+    if not self.head:
+        print ("List empty")
+        return
+    if not self.head.next:
+    
+
+
+    def add_node(value_to_insert, pos=None):
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Node:
     def __init__(self, value, next = None):
         self.value = value
         self.next = next

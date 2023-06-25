@@ -10,6 +10,20 @@
 
 # * Attempt  2
 
+def boats_to_save_people(people, limit):
+    left = 0
+    boats = 0
+    right = len(people) - 1
+    while left <= right:
+        if left == right:
+            break
+        if people[left] + people[right] > limit:
+            boats += 1
+            right -= 1
+        else:
+            boats += 1
+            right
+
 # def boats_to_save_people (people, limit):
 #     left = 0
 #     boats = 0
