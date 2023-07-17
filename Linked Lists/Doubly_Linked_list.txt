@@ -1,7 +1,7 @@
 #Doubly LinkedList
 
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
         self.prev = None
@@ -9,106 +9,439 @@ class Node:
     def __str__(self):
         return str(self.data)
 
-
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
-        self.size = 0
 
     def __str__(self):
         if self.head is None:
-            return "Empty"
+            return "Empty List"
         else:
-            return str(self.head.data)
+            temp = self.head
+            s = ""
+            while temp is not None:
+                s += str(temp.data) + " "
+                temp = temp.next
+            return s
 
-    def add_first(self,data):
-        new_node = Node(data)
+    def add_at_end(self, data):
         if self.head is None:
-            self.head = new_node
-            self.tail = new_node
+            self.head = Node(data)
+            self.tail = self.head
         else:
-            new_node.next = self.head
-            self.head.prev = new_node
-            self.head = new_node
-        self.size += 1
+            self.tail.next = Node(data)
+            self.tail.next.prev = self.tail
+            self.tail = self.tail.next
 
-    def add_last(self,data):
-        new_node = Node(data)
+    def add_at_beginning(self, data):
         if self.head is None:
-            self.head = new_node
-            self.tail = new_node
+            self.head = Node(data)
+            self.tail = self.head
         else:
-            new_node.prev = self.tail
-            self.tail.next = new_node
-            self.tail = new_node
-        self.size += 1
+            self.head.prev = Node(data)
+            self.head.prev.next = self.head
+            self.head = self.head.prev
 
-    def add_at(self,data,index):
-        if index < 0 or index > self.size:
-            print("Index out of range")
-            return
-        new_node = Node(data)
-        if index == 0:
-            self.add_first(data)
-        elif index == self.size:
-            self.add_last(data)
-        else:
-            curr = self.head
-            for i in range(index):
-                curr = curr.next
-            new_node.next = curr
-            new_node.prev = curr.prev
-            curr.prev.next = new_node
-            curr.prev = new_node
-            self.size += 1
-
-    def remove_first(self):
+    def add_after(self, data, x):
         if self.head is None:
-            print("Empty")
+            print("List is empty")
             return
         else:
+            temp = self.head
+            while temp is not None:
+                if temp.data == x:
+                    break
+                temp = temp.next
+            if temp is None:
+                print("Node is not present in the list")
+            else:
+                new_node = Node(data)
+                new_node.next = temp.next
+                new_node.prev = temp
+                if temp.next is not None:
+                    temp.next.prev = new_node
+                temp.next = new_node
+
+    def add_before(self, data, x):
+        if self.head is None:
+            print("List is empty")
+            return
+        else:
+            temp = self.head
+            while temp is not None:
+                if temp.data == x:
+                    break
+                temp = temp.next
+            if temp is None:
+                print("Node is not present in the list")
+            else:
+                new_node = Node(data)
+                new_node.next = temp
+                new_node.prev = temp.prev
+                if temp.prev is not None:
+                    temp.prev.next = new_node
+                temp.prev = new_node
+                if temp == self.head:
+                    self.head = new_node
+
+    def delete_beginning(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        if self.head.next is None:
+            self.head = None
+            self.tail = None
+            return
+        self.head = self.head.next
+        self.head.prev = None
+
+    def delete_end(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        if self.head.next is None:
+            self.head = None
+            self.tail = None
+            return
+        self.tail = self.tail.prev
+        self.tail.next = None
+
+    def delete_by_value(self, x):
+        if self.head is None:
+            print("List is empty")
+            return
+        if self.head.next is None:
+            if self.head.data == x:
+                self.head = None
+                self.tail = None
+            else:
+                print("Element not found")
+            return
+        if self.head.data == x:
             self.head = self.head.next
             self.head.prev = None
-            self.size -= 1
-
-    def remove_last(self):
-        if self.head is None:
-            print("Empty")
             return
+        temp = self.head
+        while temp is not None:
+            if temp.data == x:
+                break
+            temp = temp.next
+        if temp is None:
+            print("Element not found")
         else:
-            self.tail = self.tail.prev
-            self.tail.next = None
-            self.size -= 1
+            temp.prev.next = temp.next
+            temp.next.prev = temp.prev
 
+    def reverse(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        temp = None
+        current = self.head
+        while current is not None:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+        if temp is not None:
+            self.head = temp.prev
 
-
-class Node:
-    def __init__(self, value, next=None, prev=None):
-        self.value = value
-        self.next = next
-        self.prev = prev
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-    def createList (self, arr):
-        start = self.head
-        n = len(arr)
-
-        current = start
-        i = 0
-
-        while (i < n):
-            new_node = Node(arr[i])
-            if (i == 0):
-                start = new_node
-                current = start
+    def remove_duplicates(self):
+        if self.head is None:
+            return
+        current = self.head
+        while current.next is not None:
+            if current.data == current.next.data:
+                new = current.next.next
+                current.next = None
+                current.next = new
+                if new is not None:
+                    new.prev = current
             else:
-                current.next = new_node
-                new_node.prev = current
                 current = current.next
-            i+=1
-        self.head = start
-        return start
+
+    def count_nodes(self):
+        temp = self.head
+        count = 0
+        while temp is not None:
+            count += 1
+            temp = temp.next
+        return count
+
+    def search(self, x):
+        temp = self.head
+        while temp is not None:
+            if temp.data == x:
+                return True
+            temp = temp.next
+        return False
+
+    def get_nth_node(self, n):
+        temp = self.head
+        count = 0
+        while temp is not None:
+            if count == n:
+                return temp.data
+            count += 1
+            temp = temp.next
+        assert(False)
+        return 0
+
+    def get_nth_node_from_end(self, n):
+        temp = self.head
+        length = 0
+        while temp is not None:
+            temp = temp.next
+            length += 1
+        if n > length:
+            print("Invalid Input")
+            return
+        temp = self.head
+        for i in range(0, length - n):
+            temp = temp.next
+        return temp.data
+
+    def get_middle_node(self):
+    """ Returns the middle node of the linked list 
+        Time Complexity: O(n)
+        Space Complexity: O(1)
+        """
+        slow = self.head
+        fast = self.head
+        if self.head is not None:
+            while fast is not None and fast.next is not None:
+                fast = fast.next.next
+                slow = slow.next
+            return slow.data
+
+    def detect_loop(self):
+        """ Detects if there is a loop in the linked list
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        slow = self.head
+        fast = self.head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+    def remove_loop(self):
+        """ Removes the loop from the linked list
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        slow = self.head
+        fast = self.head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+        if slow == self.head:
+            while fast.next != slow:
+                fast = fast.next
+            fast.next = None
+        elif slow == fast:
+            slow = self.head
+            while slow.next != fast.next:
+                slow = slow.next
+                fast = fast.next
+            fast.next = None
+
+    def sorted_insert(self, data):
+        """ Inserts a node in a sorted linked list
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        new_node = Node(data)
+        if self.head is None:
+            new_node.next = self.head
+            self.head = new_node
+        elif self.head.data >= new_node.data:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next is not None and current.next.data < new_node.data:
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
+
+    def pair_wise_swap(self):
+        """ Swaps the nodes in a pair wise fashion
+        Example: 1->2->3->4->5->6 will be converted to 2->1->4->3->6->5
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        temp = self.head
+        while temp is not None and temp.next is not None:
+            temp.data, temp.next.data = temp.next.data, temp.data
+            temp = temp.next.next
+
+    def move_tail_to_head(self):
+        """ Moves the tail node to the head of the linked list
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        if self.head is None or self.head.next is None:
+            return
+        second_last = None
+        last = self.head
+        while last.next is not None:
+            second_last = last
+            last = last.next
+        second_last.next = None
+        last.next = self.head
+        self.head = last
+
+    def rotate(self, k):
+        """ Rotates the linked list by k nodes
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        if self.head is None:
+            return
+        p = self.head
+        q = self.head
+        prev = None
+        count = 0
+        while p and count < k:
+            prev = p
+            p = p.next
+            q = q.next
+            count += 1
+        p = prev
+        while q:
+            prev = q
+            q = q.next
+        q = prev
+        q.next = self.head
+        self.head = p.next
+        p.next = None
+
+    def is_palindrome(self):
+        """ Checks if the linked list is a palindrome
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        s = []
+        p = self.head
+        while p:
+            s.append(p.data)
+            p = p.next
+        p = self.head
+        while p:
+            data = s.pop()
+            if p.data != data:
+                return False
+            p = p.next
+        return True
+
+    def intersection(self, list2):
+        """ Finds the intersection of two linked lists
+        Example: 1->2->3->4->5->6 and 2->4->6 will return 2->4->6
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        p = self.head
+        q = list2.head
+        diff = 0
+        while p and q:
+            p = p.next
+            q = q.next
+        while p:
+            diff += 1
+            p = p.next
+        while q:
+            diff -= 1
+            q = q.next
+        p = self.head
+        q = list2.head
+        if diff > 0:
+            while diff:
+                p = p.next
+                diff -= 1
+        else:
+            while diff:
+                q = q.next
+                diff += 1
+        while p and q:
+            if p == q:
+                return p.data
+            p = p.next
+            q = q.next
+        return -1
+
+
+    def reverse_recursive(self):
+        """ Reverses the linked list recursively
+            Time Complexity: O(n)
+            Space Complexity: O(n)
+            """
+        def _reverse_recursive(cur, prev):
+            if not cur:
+                return prev
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+            return _reverse_recursive(cur, prev)
+        self.head = _reverse_recursive(cur=self.head, prev=None)
+
+    def reverse_iterative(self):
+        """ Reverses the linked list iteratively
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        prev = None
+        cur = self.head
+        while cur:
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+        self.head = prev
+
+    def merge_sorted(self, list2):
+        """ Merges two sorted linked lists
+            Time Complexity: O(n)
+            Space Complexity: O(1)
+            """
+        p = self.head
+        q = list2.head
+        s = None
+        if not p:
+            return q
+        if not q:
+            return p
+        if p and q:
+            if p.data <= q.data:
+                s = p
+                p = s.next
+            else:
+                s = q
+                q = s.next
+            new_head = s
+        while p and q:
+            if p.data <= q.data:
+                s.next = p
+                s = p
+                p = s.next
+            else:
+                s.next = q
+                s = q
+                q = s.next
+        if not p:
+            s.next = q
+        if not q:
+            s.next = p
+        return new_head
+
+
+
+
+

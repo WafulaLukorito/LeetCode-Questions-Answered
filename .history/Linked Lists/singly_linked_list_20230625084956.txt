@@ -5,114 +5,69 @@ class Node:
         self.value = value
         self.next = next
 
+    def get_value(self):
+        return self.value
+    
+    def get_next(self):
+        return self.next
+    
     def __str__(self):
         return str(self.value)
+
+    def set_value(self, value):
+        self.value = value
+
+    def set_next(self, new_next):
+        self.next= new_next
 
 class LinkedList:
     def __init__(self):
         self.head = None:
-
+        self.tail = None
 
     def get_size(self):
-        if not self.head:
-            print ("List empty")
-            return 0
-        count = 1
-        current = self.head
-        while current.next:
-            current = current.next
-            count +=1 
-        return count
+    if not self.head:
+        print ("List empty")
+        return
+    count = 1
+    current = self.head
+    while current.next:
+        current = current.next
+        count +=1 
+    return count
 
 
 
-    def add_node(self, value_to_insert, pos=None):
+    def add_node(value_to_insert, pos=None):
         size = self.get_size()
+        if (pos) and ((pos<0) or (pos>size)):
+            print ("invalid position!")
+            return
         new_node = Node(value_to_insert)
-        if pos is not None:
-            if pos < 0 or pos > size:
-                print ("invalid position!")
+        if pos:
+            if (pos == 0):
+                new_next = self.head
+                self.head = new_node
+                self.head.next = new_next
                 return
-            if pos==0:
-                if not self.head:
-                    self.head = new_node
-                else:
-                    current = self.head
-                    for _ in range (pos-1):
-                        current = current.next
-                    new_next = current.next
-                    current.next = new_node
-                    new_node.next = new_next
+            else:
+                count= 0
+                current = self.head
+                for _ in range (pos -1):
+                    current = current.next
+                    count +=1
+                new_next = current.next
+                current.next = new_node
+                new_node.next = new_next
+                return
         else:
             if not self.head:
-                self.head = new_node
-            else:
-                current = self.head
-                while current.next:
-                    current = current.next
-                current.next = new_node
-
-    def delete_node(self, value_to_delete):
-        if not self.head:
-            print ("Empty list!")
-            return
-        if self.head.value == value_to_delete:
-            self.head=self.head.next
-        else:
-            current= self.head
-            while current.next and current.next.value != value_to_delete:
-                current=current.next
-            if current.next:
-                to_delete = current.next
-                current.next=current.next.next
-                to_delete.next=None
-            else:
-                print ("Value not found!")
-                return
-
-    def __str__(self):
-        if not self.head:
-            return "Empty List!"
-        else:
-            current = self.head
-            output = str(current.value)
-            while (current.next != None):
+                    self.head=new_node
+                    return
+            while current.next:
                 current = current.next
-                output += " -> " +str(current.value)
-            return output
-
-    def reverse_linked_list (self):
-        if not self.head:
-            print ("Empty list")
+            current.next = new_node
             return
-
-        prev=None
-        current=self.head
-        while current:
-            next = current.next
-            current.next= prev
-
-
-
-
-      def has_cycle(self):
-        if not self.head
-            print ("empty list!")
-            return False
-        if self.head.next == None or self.head.next.next== None:
-            print ("List too short to have a cycle")
-            return False
-        else:
-            tortoise = self.head
-            hare = self.head
-        while tortoise.next and hare.next:
-            tortoise = tortoise.next
-            hare = hare.next.next
-            if tortoise == hare:
-                print ("cycle found!")
-                return True
-        print ("cycle not found!")
-        return False
 
 
 
