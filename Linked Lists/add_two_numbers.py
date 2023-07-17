@@ -35,6 +35,7 @@ class Solution:
             if l1:
                 # add l1.val to carry
                 carry += l1.val
+                
                 # move l1 to the next node
                 l1 = l1.next
             # if l2 is not None

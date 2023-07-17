@@ -69,3 +69,20 @@ class Solution:
                 node.next = node.next.next
                 return head
 
+
+def remove_nth_node_from_end(self, n):
+    dummy = ListNode(0)
+    dummy.next= self.head
+
+    slow = dummy.next
+    fast = dummy.next
+
+    for i in range (n):
+        fast = fast.next
+
+    while fast.next:
+        slow=slow.next
+        fast = fast.next
+
+    slow.next = slow.next.next
+    return self.head

@@ -51,6 +51,9 @@ class Solution:
 
 
 class Solution:
+    
+    
+    
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         # *Create a dummy node to point to the head
         dummy = ListNode(0)
