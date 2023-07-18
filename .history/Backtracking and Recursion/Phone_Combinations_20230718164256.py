@@ -19,19 +19,19 @@ class Solution:
         
         #!Important
         for i in range(len(currentString)):
-            self.backtracking(digits, m, cur+currentString[i], ans, index+1)
+            self.backtracking(digits, m, cur+currentString, ans, i+1)
         
     def combinations(self, digits):
-        ans = []
-        if (len(digits)==0):
-            return ans
+        if not digits:
+            return []
         
         m = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
                    "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
         
-       
+        ans = []
         cur = ""
-        self.backtracking(digits, m, cur, ans, 0)
+        index = 0
+        self.backtracking(digits, m, cur, ans, index)
         return ans
 
 solution = Solution()
@@ -44,9 +44,3 @@ output = solution.combinations(digits)
 
 if output==expected_output:
     print ("Test Passed!", output)
-
-email = "jones@lder.com"
-
-local_name, domain_name= email.split("@")
-
-print (local_name, domain_name)

@@ -19,7 +19,7 @@ class Solution:
         
         #!Important
         for i in range(len(currentString)):
-            self.backtracking(digits, m, cur+currentString[i], ans, index+1)
+            self.backtracking(digits, m, cur+currentString, ans, index+1)
         
     def combinations(self, digits):
         ans = []
@@ -44,9 +44,3 @@ output = solution.combinations(digits)
 
 if output==expected_output:
     print ("Test Passed!", output)
-
-email = "jones@lder.com"
-
-local_name, domain_name= email.split("@")
-
-print (local_name, domain_name)

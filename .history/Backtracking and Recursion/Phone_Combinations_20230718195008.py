@@ -47,6 +47,6 @@ if output==expected_output:
 
 email = "jones@lder.com"
 
-local_name, domain_name= email.split("@")
+local_name, domain_name= email.split("a")
 
 print (local_name, domain_name)

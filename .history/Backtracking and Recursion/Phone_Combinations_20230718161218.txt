@@ -12,12 +12,6 @@ class Solution:
             return
         if (index==len(digits)):
             ans.append(cur[:])
-        
-        currentDigit=digits[index]
-        currentString = m[currentDigit]
-
-        for i in range (index, len(digits)):
-            self.backtracking(ans, m, digits, cur+currentString, i+1)
 
 
     def combinations(self, digits):
