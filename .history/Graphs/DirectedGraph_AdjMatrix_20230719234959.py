@@ -77,7 +77,7 @@ g = Graph(5)
 
 g.insertEdge(1,2)
 g.insertEdge(2,1)
-g.insertEdge(3,4)
+g.insertEdge(6,4)
 g.insertEdge(1,4)
 
 print(g)

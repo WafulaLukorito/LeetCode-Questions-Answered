@@ -127,7 +127,7 @@
 
 # print(myGraph2)
 
-from collections import defaultdict
+from Collections import defaultdict
 
 class Graph:
     def __init__(self):
@@ -146,5 +146,3 @@ mygraph = Graph()
 mygraph.insertEdge(1,2)
 mygraph.insertEdge(1,5)
 mygraph.insertEdge(5,3)
-
-print (mygraph)

@@ -102,49 +102,26 @@
 
 # print(myGraph)
 
-# from collections import defaultdict
-
-# class Graph2:
-#     def __init__(self):
-#         self.graph=defaultdict(list)
-    
-#     def insertEdge(self, v1, v2,):
-#         self.graph[v1].append(v2)
-    
-#     def __str__(self):
-#         output= ""
-#         for node in self.graph:
-#             neighbours = ", ".join(str(val) for val in self.graph[node])
-#             output += f"{node} => {neighbours}\n"
-#         return output
-
-# myGraph2 = Graph2()
-
-# myGraph2.insertEdge(1,2)
-# myGraph2.insertEdge(1,3)
-# myGraph2.insertEdge(2,7)
-# myGraph2.insertEdge(3, 7)
-
-# print(myGraph2)
-
 from collections import defaultdict
 
-class Graph:
+class Graph2:
     def __init__(self):
         self.graph=defaultdict(list)
-    def insertEdge(self,v1,v2):
+    
+    def insertEdge(self, v1, v2,):
         self.graph[v1].append(v2)
+    
     def __str__(self):
-        my_str=""
+        output= ""
         for node in self.graph:
-            neighbors = ", ".join(str(val) for val in self.graph[node])
-            my_str += f"{node} => {neighbors}\n"
-        return my_str
+            neighbours = ", ".join(str(val)) for val in self.graph[node])
+            output += f"{node} => {neighbours}"
+            return output.rstrip()
 
-mygraph = Graph()
+myGraph2 = Graph2()
 
-mygraph.insertEdge(1,2)
-mygraph.insertEdge(1,5)
-mygraph.insertEdge(5,3)
+myGraph.insertEdge(1,2)
+myGraph.insertEdge(1,3)
+myGraph.insertEdge(2,7)
 
-print (mygraph)
+print(myGraph)

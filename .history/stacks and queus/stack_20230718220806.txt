@@ -1,0 +1,22 @@
+﻿    """Stack implementation as a list
+    """
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+    
+    def push(self, item):
+        self.stack.append(item)
+    
+    def pop(self):
+        if not self.stack:
+            return None
+        return self.stack.pop()
+    
+    def top(self):
+        if not self.stack:
+            return None
+        return (self.stack[-1])
+    
+    def __str__(self):
+        return str(self.stack)

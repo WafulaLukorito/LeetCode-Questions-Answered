@@ -61,8 +61,6 @@ class Graph:
     def insertEdge(self, v1, v2):
         if self.withinBounds(v1, v2):
             self.graph[v1][v2]=1
-        else:
-            print ("out of bounds")
     def __str__(self):
         my_str=""
         for i in range(self.numberOfNodes):
@@ -77,7 +75,7 @@ g = Graph(5)
 
 g.insertEdge(1,2)
 g.insertEdge(2,1)
-g.insertEdge(3,4)
+g.insertEdge(6,4)
 g.insertEdge(1,4)
 
 print(g)

@@ -1,0 +1,76 @@
+    
+"""IMPLEMENT DIRECTED GRAPH USING AN ADJACENCY LIST
+    """
+
+# from collections import defaultdict
+
+
+# class Graph:
+#     def __init__(self):
+#         self.graph = defaultdict(list) #*Points to a list of values that correspond to a node
+    
+#     def insertEdge(self, v1, v2): #*create relations b2n edges
+#         self.graph[v1].append([v2])
+
+#     def printGraph(self):
+#         for node in self.graph:
+#             for v in self.graph[node]:
+#                 print(node, "=>", v)
+
+
+# my_graph = Graph()
+
+# my_graph.insertEdge(1,5)
+# my_graph.insertEdge(5,2)
+# my_graph.insertEdge(2,7)
+# my_graph.insertEdge(7,1)
+
+# my_graph.printGraph()
+
+
+
+# from collections import defaultdict
+
+
+# class Graph:
+#     def __init__(self):
+#         self.graph = defaultdict(list)
+
+#     def insertEdge(self, v1, v2):
+#         self.graph[v1].append([v2])
+    
+#     def printGraph (self):
+#         for node in self.graph:
+#             for val in self.graph[node]:
+#                 print(node, "=>", val)
+
+# myGraph = Graph()
+# myGraph.insertEdge(1,8)
+# myGraph.insertEdge (8,9)
+# myGraph.insertEdge(9, 3)
+# myGraph.insertEdge(3, 7)
+
+# myGraph.printGraph()
+
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+        
+    def insertEdge(self, v1, v2):
+        self.graph[v1].append(v2)
+    
+    def __str__ (self):
+        str1 = ""
+        for node in self.graph:
+            for val in self.graph[node]:
+                str1+= (str(node)+ "=>"+str(val))
+        return str1
+
+myGraph = Graph()
+
+myGraph.insertEdge(1,8)
+myGraph.insertEdge(8,6)
+
+print(myGraph)

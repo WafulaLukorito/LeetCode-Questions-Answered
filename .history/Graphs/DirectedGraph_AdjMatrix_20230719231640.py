@@ -24,60 +24,35 @@
 
 # g.printGraph()
 
-# class Graph:
-#     def __init__(self, numberOfNodes):
-#         self.numberOfNodes = numberOfNodes+1
-#         self.graph = [[0 for x in range(self.numberOfNodes)] for y in range(self.numberOfNodes)]
-    
-#     def withinBounds(self,v1, v2):
-#         return (v1>0 and v1<self.numberOfNodes) and (v2>0 and v2<self.numberOfNodes)
-    
-#     def insertEdge(self, v1, v2):
-#         if self.withinBounds(v1,v2):
-#             self.graph[v1][v2]=1
-#         else:
-#             print ("out of bounds")
-#             return
-    
-#     def __str__(self):
-#         mystr=""
-#         for i in range(len(self.graph)):
-#             for j in range(len(self.graph[i])):
-#                 if self.graph[i][j]==1:
-#                     mystr+= f"{i} => {j}\n"
-#         return mystr
-
-
-
-
-
 class Graph:
-    def __init__(self,numberOfNodes):
-        self.numberOfNodes=numberOfNodes+1
-        self.graph = [[0 for x in range(self.numberOfNodes)] for y in range(self.numberOfNodes)]
+    def __init__(self, numberOfNodes):
+        self.numberOfNodes = numberOfNodes+1
+        self.graph = [[0 for x in range(self.numberOfNodes)]0 for y in range(self.numberOfNodes)]
     
-    def withinBounds(self, v1, v2):
+    def withinBounds(self,v1, v2):
         return (v1>0 and v1<self.numberOfNodes) and (v2>0 and v2<self.numberOfNodes)
+    
     def insertEdge(self, v1, v2):
-        if self.withinBounds(v1, v2):
+        if self.withinBounds(v1,v2):
             self.graph[v1][v2]=1
         else:
             print ("out of bounds")
+            return
+    
     def __str__(self):
-        my_str=""
-        for i in range(self.numberOfNodes):
+        mystr=""
+        for i in range(len(self.graph)):
             for j in range(len(self.graph[i])):
                 if self.graph[i][j]==1:
-                    my_str+=f"{i} => {j}\n"
-        return my_str
-
+                    mystr+= f"{i} => {j}\n"
+        return mystr
 
 
 g = Graph(5)
 
 g.insertEdge(1,2)
 g.insertEdge(2,1)
-g.insertEdge(3,4)
+g.insertEdge(9,4)
 g.insertEdge(1,4)
 
 print(g)

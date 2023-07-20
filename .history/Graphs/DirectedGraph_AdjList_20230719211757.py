@@ -79,72 +79,25 @@
 
 # print(myGraph)
 
-# from collections import defaultdict
-# class Graph:
-#     def __init__(self):
-#         self.graph= defaultdict(list)
-#     def insertEdge(self, v1, v2):
-#         self.graph[v1].append(v2)
-#     def __str__(self):
-#         output = ""
-#         for node in self.graph:
-#             print (str(node))
-#             neighbors = ", ".join(str(val) for val in self.graph[node])
-#             output += f"{node} => {neighbors}\n"
-#         return output.rstrip()
-
-# myGraph = Graph()
-
-# myGraph.insertEdge(1,8)
-# myGraph.insertEdge (8,9)
-# myGraph.insertEdge(9, 3)
-# myGraph.insertEdge(3, 7)
-
-# print(myGraph)
-
-# from collections import defaultdict
-
-# class Graph2:
-#     def __init__(self):
-#         self.graph=defaultdict(list)
-    
-#     def insertEdge(self, v1, v2,):
-#         self.graph[v1].append(v2)
-    
-#     def __str__(self):
-#         output= ""
-#         for node in self.graph:
-#             neighbours = ", ".join(str(val) for val in self.graph[node])
-#             output += f"{node} => {neighbours}\n"
-#         return output
-
-# myGraph2 = Graph2()
-
-# myGraph2.insertEdge(1,2)
-# myGraph2.insertEdge(1,3)
-# myGraph2.insertEdge(2,7)
-# myGraph2.insertEdge(3, 7)
-
-# print(myGraph2)
-
 from collections import defaultdict
-
 class Graph:
     def __init__(self):
-        self.graph=defaultdict(list)
-    def insertEdge(self,v1,v2):
+        self.graph= defaultdict(list)
+    def insertEdge(self, v1, v2):
         self.graph[v1].append(v2)
     def __str__(self):
-        my_str=""
+        output = ""
         for node in self.graph:
+            print (str(node))
             neighbors = ", ".join(str(val) for val in self.graph[node])
-            my_str += f"{node} => {neighbors}\n"
-        return my_str
+            output += f"{node} => {neighbors}\n"
+        return output.rstrip()
 
-mygraph = Graph()
+myGraph = Graph()
 
-mygraph.insertEdge(1,2)
-mygraph.insertEdge(1,5)
-mygraph.insertEdge(5,3)
+myGraph.insertEdge(1,8)
+myGraph.insertEdge (8,9)
+myGraph.insertEdge(9, 3)
+myGraph.insertEdge(3, 7)
 
-print (mygraph)
+print(myGraph)
