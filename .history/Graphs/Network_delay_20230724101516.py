@@ -105,7 +105,6 @@ def Network_delay(times, start_node, number_of_nodes):
                 total_time_to_neighbor = current_time + timetoneighbor
                 if total_time_to_neighbor < time_dict[neighbor]:
                     time_dict[neighbor]=total_time_to_neighbor
-                    #Add neighbor to priority queue!!
                     heapq.heappush(min_heap, (total_time_to_neighbor, neighbor))
     
     max_time = max(time_dict.values())

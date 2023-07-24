@@ -89,7 +89,7 @@ print (NetworkDelay([[2,1,1],[2,3,1],[3,4,1]], 4, 2))
 def Network_delay(times, start_node, number_of_nodes):
     graph = defaultdict(list)
     for start, dest, time in times:
-        graph[start].append((dest, time))
+        graph[start]=[(dest, time)]
         
     #create min_heap
     min_heap=[(0,start_node)]
@@ -99,16 +99,14 @@ def Network_delay(times, start_node, number_of_nodes):
     time_dict[start_node]=0
     
     while min_heap:
-        current_time, current_node = heapq.heappop(min_heap)
+        current_node, current_time = heapq.heappop(min_heap)
         if current_time <= time_dict[current_node]:
             for neighbor, timetoneighbor in graph[current_node]:
                 total_time_to_neighbor = current_time + timetoneighbor
                 if total_time_to_neighbor < time_dict[neighbor]:
                     time_dict[neighbor]=total_time_to_neighbor
-                    #Add neighbor to priority queue!!
-                    heapq.heappush(min_heap, (total_time_to_neighbor, neighbor))
     
     max_time = max(time_dict.values())
     return max_time if max_time < float('infinity') else -1
 
-print (Network_delay([[2,1,1],[2,3,1],[3,4,1]], 2, 4))
+print (Network_delay([[2,1,1],[2,3,1],[3,4,1]], 4, 2))
