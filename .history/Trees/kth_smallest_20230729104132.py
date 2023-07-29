@@ -104,17 +104,16 @@ def kth_smallest(current_node, k):
 
 class Solution:
     def kth_smallest(self, root, k):
-        self.k= k
         self.current_node = root
+        self.k = k
         self.res = self._kth_smallest(self.current_node)
         return self.res.val if self.res else None
     
-    def _kth_smallest(self, current_node):
+    def _kth_smallest(current_node):
         if not current_node:
             return
         self._kth_smallest(current_node.left)
-        self.k-=1
         if self.k ==0:
-            self.res= current_node
-            return
+            self.res = current_node
+        self.k -=1
         self._kth_smallest(current_node.right)
