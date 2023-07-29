@@ -47,56 +47,91 @@ You must write an algorithm with O(log n) runtime complexity.
 
 # * Second Attempt
 
-class Solution():
-    def first_and_last(self, nums, target):
-        if not nums:
-            return (-1, -1)
-        return (self.get_left(nums,target), self.get_right(nums,target))
-    
-    def get_left(self, nums, target):
-        left = 0
-        right = len(nums) - 1
-        while left <= right:
-            mid = (left+right) // 2
-            if nums[mid] == target:
-                if mid-1 >=0 and nums[mid-1] !=target:
-                    return mid
-                else:
-                    right = mid - 1
-            elif nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid - 1
-        return -1
+def get_left(nums, target):
+    left = 0
+    right = len(nums) - 1
 
-    def get_right(self, nums, target):
-        left=0
-        right=len(nums) -1
-        while left <= right:
-            mid = (left+right) // 2
-            if nums[mid] == target:
-                if mid+1 < len(nums) and nums[mid+1] != target:
-                    return mid
-                else:
-                    left = mid + 1
-            elif nums[mid] > target:
-                right = mid - 1
-            else:
-                left = mid + 1
-        return -1
+    while (left <= right):
+        mid = (left + right)//2
+
+        if (nums[mid] == target):
+            if (mid - 1 >= 0 and nums[mid-1] != nums[mid] or mid == 0):
+                return mid
+            right = mid - 1
+
+        elif (nums[mid] > target):
+            right = mid - 1
+
+        else:
+            left = mid + 1
+    return -1
 
 
-s=Solution()
+def get_right(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while (left <= right):
+        mid = (left + right)//2
+
+        if (nums[mid] == target):
+            if (
+                return mid
+            left=mid + 1
+        elif (nums[mid] < target):
+            left=mid+1
+        else:
+            right=mid - 1
+    return -1
+
+
+# def get_first(nums, target):
+#     left = 0
+#     right = len(nums) - 1
+
+#     while (left <= right):
+#         mid = (left + right)//2
+#         if nums[mid] == target:
+#             if (mid-1 >= 0 and nums[mid-1] != nums[mid] or mid == 0):
+#                 return mid
+#             right = mid-1
+
+#         elif (nums[mid] > target):
+#             right = mid - 1
+#         else:
+#             left = mid+1
+#     return -1
+
+
+# def get_last(nums, target):
+#     left = 0
+#     right = len(nums) - 1
+
+#     while (left <= right):
+#         mid = (left + right) // 2
+
+#         if nums[mid] == target:
+#             if (mid + 1 <= len(nums) and (nums[mid+1] != nums[mid] or mid == len(nums))):
+#                 return mid
+
+#         elif (nums[mid] < target):
+#             left = mid+1
+#         else:
+#             right = mid - 1
+#     return -1
+
+
+def first_and_last(nums, target):
+    return (get_left(nums, target), get_right(nums, target))
+
 
 nums=[5, 7, 7, 8, 8, 8, 8, 8, 10]
 
 target=8
 
-result=s.first_and_last(nums, target)
+result=first_and_last(nums, target)
 
-print (result)
-
-#print(f"For the target {target} in list {nums}: \n First occurrence is {get_first(nums, target)} \n last occurrence is {get_last(nums, target)}")
+print(f"For the target {target} in list {nums}: \n First occurrence is {get_first(nums, target)} \n last occurrence is {get_last(nums, target)}")
 
 # class Solution:
 # 	def searchRange(self, nums: List[int], target: int) -> List[int]:

@@ -5,13 +5,6 @@ Elements at the greatest index will “wrap around” to the beginning of the li
 # no time/space requirements
 # return "rotated" version of input list
 
-
-def rotate(arr, n):
-    n = n%len(arr)
-    part1 = arr[-n:]
-    part2 = arr[:-n]
-    return part1+part2
-
 #*------One Solution---------------- O(N) space create new lists
 # def rotate(my_list, num_rotations):
 #   places_moved= num_rotations % len(my_list)

@@ -26,7 +26,7 @@ def rob (nums):
         if i == 1:
             max_cum_array[1]=max(nums[0],nums[1])
         else:
-            max_cum_array[i]= max(max_cum_array[i-1], max_cum_array[i-2]+nums[i])
+            max_cum_array[i]= max(nums[i-1], nums[i-2]+nums[i])
     
     return max_cum_array[-1]
 

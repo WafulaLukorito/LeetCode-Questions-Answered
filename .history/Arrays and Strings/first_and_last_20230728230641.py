@@ -51,39 +51,42 @@ class Solution():
     def first_and_last(self, nums, target):
         if not nums:
             return (-1, -1)
+        if len(nums)==1:
+            return (0, 0)
         return (self.get_left(nums,target), self.get_right(nums,target))
     
     def get_left(self, nums, target):
         left = 0
-        right = len(nums) - 1
+        right = len(nums)-1
         while left <= right:
-            mid = (left+right) // 2
+            mid = (left+right)//2
             if nums[mid] == target:
-                if mid-1 >=0 and nums[mid-1] !=target:
+                if nums[mid-1] !=target and mid-1 >=0:
                     return mid
                 else:
-                    right = mid - 1
-            elif nums[mid] < target:
-                left = mid + 1
-            else:
-                right = mid - 1
+                    right = mid-1
+            if nums[mid]> target:
+                left = mid+1
+            if nums[mid]<target:
+                right = mid-1
         return -1
 
     def get_right(self, nums, target):
         left=0
         right=len(nums) -1
         while left <= right:
-            mid = (left+right) // 2
-            if nums[mid] == target:
-                if mid+1 < len(nums) and nums[mid+1] != target:
-                    return mid
+            mid = (left+right)//2
+            if nums[mid] ==target:
+                if nums[mid+1] != target and mid+1>=0
+                        return mid
                 else:
-                    left = mid + 1
-            elif nums[mid] > target:
-                right = mid - 1
-            else:
-                left = mid + 1
+                    left = mid+1
+            if nums[mid]> target:
+                left = mid+1
+            if nums[mid]<target:
+                right = mid-1
         return -1
+
 
 
 s=Solution()

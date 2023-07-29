@@ -19,22 +19,12 @@ nums = [0, 2, 3, 0, 7, 5, 0, 9, 0]
 # nums = [0, 2, 3, 0, 7, 5, 0, 9, 0]
 
 
-
-# def move_zeroes(nums):
-#     for num in nums:
-#         if num==0:
-#             nums.remove(num)
-#             nums.append(0)
-#     return nums
-
-
 def move_zeroes(nums):
-    zero_p=0
-    for i in range(len(nums)):
-        if nums[i] != 0:
-            nums[i], nums[zero_p]= nums[zero_p], nums[i]
-            zero_p +=1
-    return nums
+    for num in nums:
+        if num == 0:
+            nums.remove(num)
+            nums.append(0)
+    return (nums)
 
 
 print(move_zeroes(nums))

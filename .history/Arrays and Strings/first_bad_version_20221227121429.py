@@ -10,32 +10,18 @@ You are given an API bool isBadVersion(version) which returns whether version is
 # @return an integer
 # def isBadVersion(version):
 
-# class Solution:
-#     def firstBadVersion(self, n):
-#         """
-#         :type n: int
-#         :type: int
-#         """
-#         left = 1
-#         right = n
-#         while (left < right):
-#             mid = (left + right)//2
-#             if(not isBadVersion(mid)):
-#                 left = mid +1
-#             else:
-#                 right = (mid)
-#         return left
-
-
 class Solution:
-    def first_bad_version(self, n):
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :type: int
+        """
         left = 1
         right = n
-        
-        while left < right: 
-            mid = (left+right)//2
-            if isBadVersion(mid):
-                right = mid
+        while (left < right):
+            mid = (left + right)//2
+            if(not isBadVersion(mid)):
+                left = mid +1
             else:
-                left = mid+1
+                right = (mid)
         return left

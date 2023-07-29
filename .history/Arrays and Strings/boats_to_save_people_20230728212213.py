@@ -10,19 +10,19 @@
 
 # * Attempt  2
 
-def boats_to_save_people(people, limit):
-    left = 0
-    boats = 0
-    right = len(people) - 1
-    while left <= right:
-        if left == right:
-            break
-        if people[left] + people[right] > limit:
-            boats += 1
-            right -= 1
-        else:
-            boats += 1
-            right
+# def boats_to_save_people(people, limit):
+#     left = 0
+#     boats = 0
+#     right = len(people) - 1
+#     while left <= right:
+#         if left == right:
+#             break
+#         if people[left] + people[right] > limit:
+#             boats += 1
+#             right -= 1
+#         else:
+#             boats += 1
+#             right
 
 # def boats_to_save_people (people, limit):
 #     left = 0
@@ -155,22 +155,23 @@ def boats_to_save_people(people, limit):
 
 def boats_to_save_people(people, limit):
     people.sort()
-    left = 0
-    right = len(people) - 1
-    boats = 0
-
-    while (left <= right):
-        if (left == right):
-            boats += 1
-            break
+    boats =0
+    left=0
+    right = len(people)-1
+    
+    while left <= right:
+        if left == right:
+            boats+=1
+            return boats
         else:
-            if (people[left] + people[right] <= limit):
-                boats += 1
-                left += 1
-                right -= 1
-            if (people[left] + people[right] > limit):
-                boats += 1
-                right -= 1
+            if people[left]+people[right] > limit:
+                boats+=1
+                right-=1
+            else:
+                boats+=1
+                left+=1
+                right-=1
+    
     return boats
 
 

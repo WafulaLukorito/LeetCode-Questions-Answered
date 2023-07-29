@@ -41,20 +41,20 @@
 
 # #* Whiteboarding solution
 
-def container_most_water(arr):
+def container_most_water(heights):
+    left = 0
+    right = len(heights) - 1
+    max_area = 0
 
-    left, right, max_area= 0, len(arr)-1, 0
+    while (left < right):
+        current_area = (min(heights[left], heights[right]) * (right - left))
+        max_area = (max(max_area, current_area))
 
-    while left < right:
-        curr_area = min(arr[left], arr[right]) * (right-left)
-        max_area = max(max_area, curr_area)
-        
-        if arr[left]< arr[right]:
-            left+=1
+        if heights[left] < heights[right]:
+            left += 1
         else:
-            right-=1
+            right -= 1
     return max_area
-        
 
 
 height = [4, 3, 2, 1, 4]
