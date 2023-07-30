@@ -1,0 +1,15 @@
+﻿
+def symetric_trees(root):
+    if not root:
+        return True
+    return _symetric_tree(root, root)
+
+def _symetric_tree(node1, node2):
+    if not node1 and not node2:
+        return True
+    if not node1 or not node2:
+        return False 
+    
+    left = _symetric_tree(node1.left, node2.right)
+    right = _symetric_tree(node1.right, node2.left)
+    return  (node1.val == node2.val) and left and right

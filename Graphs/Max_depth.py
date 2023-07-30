@@ -14,4 +14,9 @@
     """
 
 def maxDepth(root: TreeNode) -> int:
+    if not root:
+        return 0
+    left = maxDepth(root.left)+1
+    right = maxDepth(root.right)+1
     
+    return max(left, right)
