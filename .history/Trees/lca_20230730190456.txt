@@ -1,0 +1,18 @@
+﻿
+def lca(root, p, q):
+    current_node = root
+    if not current_node:
+        return current_node
+    
+    if (current_node==p) or (current_node==q):
+        return current_node
+    
+    left = lca(current_node.left, p, q)
+    right = lca(current_node.right, p, q)
+
+    if left and right:
+        return current_node
+    if left:
+        return left
+    if right:
+        return right

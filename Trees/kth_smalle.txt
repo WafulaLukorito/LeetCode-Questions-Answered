@@ -1,0 +1,19 @@
+﻿
+class Solution:
+    def kth_smallest(self, root, k):
+        self.current_node= root
+        self.k = k
+        self.res = None
+
+        self._kth_smallest(self.current_node)
+
+        return self.res.val if self.res else None
+
+    def _kth_smallest(self, current_node):
+        if not current_node and self.res is not None:
+            return None
+        self._kth_smallest(current_node.left)
+        self.k -=1
+        if self.k==0:
+            self.res=current_node
+        self._kth_smallest(current_node.right)

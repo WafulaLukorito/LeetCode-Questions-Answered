@@ -1,0 +1,16 @@
+﻿
+
+def isValidStr(s):
+    opening_brackets=["(", "[", "{"]
+    bracket_pairs= [("(",")"),("[","]"),("{","}")]
+    st=[]
+    for c in s:
+        if c in opening_brackets:
+            st.append(c)
+        else:
+            if not st:
+                return False
+            a=st.pop()
+            if (a, c) not in bracket_pairs:
+                return False
+    return len(st)==0
