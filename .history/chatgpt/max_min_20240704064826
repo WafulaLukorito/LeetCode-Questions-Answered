@@ -1,0 +1,23 @@
+
+#LeetCode Problem - Find Maximum and Minimum
+
+"""
+Given an array of integers, find the maximum and minimum of the array.
+
+Example 1:
+Input: [3, 5, 1, 2, 4, 8]
+Output: Maximum: 8, Minimum: 1
+
+Example 2:
+Input: [1]
+Output: Maximum: 1, Minimum: 1
+"""
+
+def find_max_min(nums):
+    if not nums:
+        return(None, None):
+    min_val = min(nums)
+    max_val = max(nums)
+    return (min_val, max_val)
+
+print (find_max_min(([8,4,3])))
