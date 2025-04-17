@@ -8,34 +8,7 @@
  */
 
 
-public class SlidingWindow {
-    public static int findMaxSumSubArray(int[] nums, int k) {
-        if (nums.length < k){
-            throw new IllegalArgumentException("Arr should be at least k!");
-        } else {
-            int windowSum = 0, maxSum =0;
-            //calculate sum of first window
-            for (int i = 0; i<k; i++){
-                windowSum += nums[i];
-            }
-            maxSum = windowSum;
 
-            //Slide the window
-            for (int i = k; i < nums.length; i++){
-                windowSum += nums[i] - nums[i-k];
-                maxSum = Math.max(windowSum, maxSum);
-            }
-            return maxSum;
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {2, 1, 5, 1, 3, 2};
-        int k = 3;
-        int res = findMaxSumSubArray(nums, k);
-        System.out.println("Maximum sum of subarray of size " + k + " is: " + res);
-    }
-}
 
 
 

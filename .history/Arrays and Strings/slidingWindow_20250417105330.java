@@ -7,26 +7,34 @@
  * 
  */
 
+/*
+ * Sliding Window
+ * 1. Maximum Sum Subarray of Size K (easy)
+ * 
+ * Given an array of positive numbers and a positive number 'k', find the maximum sum of any contiguous subarray of size 'k'.
+ * 
+ */
 
 public class SlidingWindow {
     public static int findMaxSumSubArray(int[] nums, int k) {
-        if (nums.length < k){
-            throw new IllegalArgumentException("Arr should be at least k!");
-        } else {
-            int windowSum = 0, maxSum =0;
-            //calculate sum of first window
-            for (int i = 0; i<k; i++){
-                windowSum += nums[i];
-            }
-            maxSum = windowSum;
-
-            //Slide the window
-            for (int i = k; i < nums.length; i++){
-                windowSum += nums[i] - nums[i-k];
-                maxSum = Math.max(windowSum, maxSum);
-            }
-            return maxSum;
+        if (nums.length < k) {
+            throw new IllegalArgumentException("Arr length must be at least k!");
         }
+
+        int maxSum, windowSum = 0;
+
+        // Sum of first k elements
+        for (int i = 0; i < k; i++) {
+            windowSum += nums[i];
+        }
+        maxSum = windowSum;
+
+        // Slide Window
+        for (int i = k; i < nums.length; i++) {
+            windowSum = windowSum + nums[i] - nums[i - k];
+            maxSum = Math.max(windowSum, maxSum);
+        }
+        return maxSum;
     }
 
     public static void main(String[] args) {

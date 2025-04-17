@@ -13,7 +13,6 @@ public class SlidingWindow {
         if (nums.length < k){
             throw new IllegalArgumentException("Arr should be at least k!");
         } else {
-            int windowSum = 0, maxSum =0;
             //calculate sum of first window
             for (int i = 0; i<k; i++){
                 windowSum += nums[i];
