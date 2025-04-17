@@ -4,55 +4,44 @@ import java.util.Scanner;
 
 public class BinarySearch{
 
-    public static int binarySearch(int[] nums, int num){
+    public static int binarySearch (int[] nums, int num){
 
-        int left = 0, right = nums.length -1, mid = left+ (right-left)/2;
+        int left = 0, right = nums.length -1;
 
-        while (right >= left){
+        while (left <= right){
+            int mid = left + (right-left)/2;
+
             if (nums[mid] == num){
-                return mid;
+                return num;
             }
             if (nums[mid] > num){
                 right = mid -1;
             } else {
-                left = mid +1;
+                left = mid+1;
             }
         }
-
         return -1;
+
     }
 
     public static void main(String[] args) {
-        
-        int [] nums = {1,2,3,4,5,6,7};
+        int[] nums = {1,2,3,4,5,6};
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter number to search");
+        System.out.println("Enter Element");
         int element = input.nextInt();
 
         int res = binarySearch(nums, element);
 
-        if (res == -1){
-            System.out.println("Element not found!");
-        } else {
-            System.out.println("Element found at index " + res);
-        }
+        if (res == -1)
+        System.out.println("Not found");
+        else
+        System.out.println("Found at" + res);
+
+        input.close();
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // public class BinarySearch{

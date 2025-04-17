@@ -2,57 +2,38 @@
 
 import java.util.Scanner;
 
-public class BinarySearch{
+public class BinarySearch {
+    public static int binarySearch(int[] nums, int num) {
+        int left = 0, right = nums.length - 1;
 
-    public static int binarySearch(int[] nums, int num){
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
 
-        int left = 0, right = nums.length -1, mid = left+ (right-left)/2;
-
-        while (right >= left){
-            if (nums[mid] == num){
-                return mid;
-            }
-            if (nums[mid] > num){
-                right = mid -1;
-            } else {
-                left = mid +1;
-            }
+            if (nums[mid] == num) return mid;
+            if (nums[mid] > num) right = mid - 1;
+            else left = mid + 1;
         }
 
         return -1;
     }
 
     public static void main(String[] args) {
-        
-        int [] nums = {1,2,3,4,5,6,7};
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter number to search");
+        System.out.println("Enter element to be searched:");
         int element = input.nextInt();
 
         int res = binarySearch(nums, element);
 
-        if (res == -1){
-            System.out.println("Element not found!");
-        } else {
-            System.out.println("Element found at index " + res);
-        }
+        if (res == -1)
+            System.out.println("Element not found.");
+        else
+            System.out.println("Number found at index " + res);
+
+        input.close(); // Closing scanner here for better practice
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // public class BinarySearch{
