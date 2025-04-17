@@ -30,10 +30,6 @@ nums = [0, 2, 3, 0, 7, 5, 0, 9, 0]
 # - nums.append(0) moves zeros to the end but modifies list size dynamically.
 # - Verdict: ❌ Not truly in-place (modifies list structure dynamically)
 
-# Modifying while iterating (remove() inside loop) can cause skipped zeros.
-
-# Inefficient because remove() is O(n) per call, making this O(n²) worst-case.
-
 
 # def move_zeroes(nums):
 #     for num in nums:

@@ -1,0 +1,41 @@
+
+// *Given an array of integers of size N, find maximum sum of K consecutive elements.
+
+import java.util.Scanner;
+
+public class SlidingWindowTechnique2{
+
+    public static int maxSumSubArray (int[] nums, int k){
+        if (k > nums.length || k <= 0){
+            throw new IllegalArgumentException("Invlid array length or window size!");
+        }
+            int windowSum =0, maxSum = Integer.MIN_VALUE;
+            //first K elements
+            for (int i=0; i<k; i++){
+                windowSum += nums[i];
+            }
+            maxSum = windowSum;
+
+            //Slide the Window
+            for (int i=k; i<nums.length; i++){
+                windowSum += nums[i] - nums[i-k];
+                maxSum = Math.max(windowSum, maxSum);
+            }
+            return maxSum;
+        
+    }
+
+    public static void main (String[] args){
+        int[] nums = {1,2,3,4,5,6,7,8,9};
+       
+        try (Scanner input = new Scanner(System.in)){
+            System.out.println("Input desired window size:");
+            int k = input.nextInt();
+
+            int res = maxSumSubArray(nums, k);
+            System.out.println("The maximum sum for window "+ k + " is "+ res +".");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
