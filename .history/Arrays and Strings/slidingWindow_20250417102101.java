@@ -34,21 +34,10 @@
 
         }
 
-       
-
-        }
-         public static void main (String[] args){
-
-            int[] nums = {2,1,5,1,3,2};
-            int k = 3;
-            int res = findMaxSumSubArray(nums, k);
-            System.out.println("Maximum sum of subarray of size " +k + "is: "+ res);
-         }
-
 
     }
 
- 
+ }
 
 
 

@@ -6,10 +6,9 @@ public class BinarySearch{
 
     public static int binarySearch(int[] nums, int num){
 
-        int left = 0, right = nums.length -1;
+        int left = 0, right = nums.length -1, mid = left+ (right-left)/2;
 
         while (right >= left){
-            int mid = left+ (right-left)/2;
             if (nums[mid] == num){
                 return mid;
             }
@@ -41,6 +40,8 @@ public class BinarySearch{
         input.close();
     }
 }
+
+
 
 
 
