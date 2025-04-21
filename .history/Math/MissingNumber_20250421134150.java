@@ -39,7 +39,7 @@ public class MissingNumber{
         System.out.println("The missing number: "+missingNumber(nums));
 
         int[] sortedArr = {1, 3, 5, 7, 9};
-int index = Arrays.binarySearch(sortedArr, 10);
+int index = Arrays.binarySearch(sortedArr, 5);
 System.out.println("Index of 5: " + index); 
     }
 }

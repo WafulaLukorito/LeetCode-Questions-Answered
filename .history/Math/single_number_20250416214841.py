@@ -8,7 +8,7 @@ You must implement a solution with a linear runtime complexity and use only co
 (a+b+c) => summation of unique elements
 (a+a+b+b+c) => current sum
 
-#? Time complexity: O(2*N) = O(N): We pass over input array once, then pass separately over the set
+#? Time complexity: O(2*N) = O(N): We pass over input array once, then pass separately oer the set
 
 #? Space complexity: Constant, due to usage of a set.
 
