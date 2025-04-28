@@ -18,14 +18,13 @@ Company: Amazon, Apple, Facebook, Google, Microsoft, Uber, Yahoo
 
 def two_sum(nums, target):
     my_map = {}
-
-    for i, num in enumerate(nums):
+    i = 0
+    for num in nums:
         goal = target - num
         if goal in my_map:
-            return (my_map[goal], i)
+            return (my_map[num], i)
         my_map[goal]=i
-        
-    return []
+        i+=1
 
 
 nums =  [2, 7, 11, 15]
@@ -50,8 +49,7 @@ print(two_sum(nums, target))
 #     for num in nums:
 #         goal = target- num
 #         if goal in my_dict:
-#             return (my_dict[goal], nums.index(num))  #! - Efficiency concerns: Calling nums.index(num) inside the loop results in an O(n) lookup for each element, making the overall time complexity O(n²) instead of the optimal O(n).
-
+#             return (my_dict[goal], nums.index(num))
 #         my_dict[num]= nums.index(num)
 
 # #* Another solution:

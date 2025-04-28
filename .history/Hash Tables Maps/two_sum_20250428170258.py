@@ -22,7 +22,7 @@ def two_sum(nums, target):
     for i, num in enumerate(nums):
         goal = target - num
         if goal in my_map:
-            return (my_map[goal], i)
+            return (my_map[num], i)
         my_map[goal]=i
         
     return []

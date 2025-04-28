@@ -16,7 +16,7 @@ def add_binary(a, b):
 
         if i >= 0:
             total += int(a[i])
-            i -= 1  
+            i -= 1
 
         if j >= 0:
             total += int(b[j])
