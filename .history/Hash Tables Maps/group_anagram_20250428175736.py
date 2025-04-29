@@ -29,29 +29,42 @@
     #? Space: O(N)-- use hashmap to store our data
 
     """
-from collections import defaultdict
+# from typing import List
+# class Solution:
 
-def groupAnagrams(strs):
-    anagram_map = defaultdict(list)  # Automatically initializes new keys with []
-    for s in strs:
-        sorted_s = tuple(sorted(s))
-        anagram_map[sorted_s].append(s)  # No need to check if key exists
-    return list(anagram_map.values())
+#     def findHash(self, str):
+#         return "".join(sorted(str))  #* sort a string
+
+
+#     def group_anagrams(self, strs):
+#         answers = []
+#         m = {}
+
+#         for s in strs:
+#             hashed = self.findHash(s)
+#             if hashed not in m:
+#                 m[hashed] = []
+#             m[hashed].append(s)
+
+#         for p in m.values():
+#             answers.append(p)
+
+#         return answers
 
 
 # *** Another Very simple solution ***
 
-# def group_anagrams(strs):
-#     m ={}
+def group_anagrams(strs):
+    m ={}
     
-#     for word in strs:
-#         s = "".join(sorted(word))
-#         if s in m:
-#             m[s].append(word)
-#         else:
-#             m[s]=[word]
+    for word in strs:
+        s = "".join(sorted(word))
+        if s in m:
+            m[s].append(word)
+        else:
+            m[s]=[word]
     
-#     return list(m.values())
+    return list(m.values())
 
 
 # def group_anagrams(s):

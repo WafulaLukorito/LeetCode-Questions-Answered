@@ -11,7 +11,6 @@
  1. sort array and check if nums[i] == nums [i-1]
  2. Create set and check if set is equal to array.
  #?3. Use map to track items --- Time O(N)--- single loop over input array. Space O(N)--- We create map to track
- #4. Use Counter
 """
 def contains_duplicates(nums):
     my_map ={}

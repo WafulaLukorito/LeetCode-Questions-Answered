@@ -22,15 +22,17 @@ def four_sum_ii(nums1, nums2, nums3, nums4):
     sum12_freq = defaultdict(int)
     count = 0
     
+    #Sum of first two
     for num1 in nums1:
-        for num2 in nums2:
+        for num2 in nums1:
             sum12= num1+num2
-            sum12_freq[sum12] +=1
-    
+            sum12_freq[sum12] += 1
+            
+    #Sum of next two
     for num3 in nums3:
         for num4 in nums4:
-            goal  = -(num3+num4)
-            count+= sum12_freq.get(goal, 0)
+            goal = -(num3+num4)
+            count += sum12_freq.get(goal, 0)
     
     return count
 

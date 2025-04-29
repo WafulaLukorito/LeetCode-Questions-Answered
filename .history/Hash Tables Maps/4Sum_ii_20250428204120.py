@@ -25,7 +25,7 @@ def four_sum_ii(nums1, nums2, nums3, nums4):
     for num1 in nums1:
         for num2 in nums2:
             sum12= num1+num2
-            sum12_freq[sum12] +=1
+            sum12_freq[sum12]=sum12
     
     for num3 in nums3:
         for num4 in nums4:

@@ -34,58 +34,26 @@ lRUCache.get(3);    // return 3
 lRUCache.get(4);    // return 4
 
 '''
-
 from collections import OrderedDict
 
 class LRUCache:
-    def __init__(self, capacity):
+    def __init__(self, capacity: int):
         self.capacity = capacity
         self.cache = OrderedDict()
-    
-    def get(self, key):
+
+    def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        self.cache.move_to_end(key)
+        self.cache.move_to_end(key)  # Mark as recently used
         return self.cache[key]
-    
-    def put(self, key, value):
+
+    def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            self.cache.move_to_end(key)
+            self.cache.move_to_end(key)  # Update and mark as recent
         else:
             if len(self.cache) >= self.capacity:
-                self.cache.popitem(last=False)
+                self.cache.popitem(last=False)  # Evict LRU
         self.cache[key] = value
-
-
-
-
-
-
-
-
-
-
-
-# from collections import OrderedDict
-
-# class LRUCache:
-#     def __init__(self, capacity: int):
-#         self.capacity = capacity
-#         self.cache = OrderedDict()
-
-#     def get(self, key: int) -> int:
-#         if key not in self.cache:
-#             return -1
-#         self.cache.move_to_end(key)  # Mark as recently used
-#         return self.cache[key]
-
-#     def put(self, key: int, value: int) -> None:
-#         if key in self.cache:
-#             self.cache.move_to_end(key)  # Update and mark as recent
-#         else:
-#             if len(self.cache) >= self.capacity:
-#                 self.cache.popitem(last=False)  # Evict LRU
-#         self.cache[key] = value
 
 
 # from collections import deque

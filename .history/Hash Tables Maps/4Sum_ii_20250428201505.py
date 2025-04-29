@@ -20,19 +20,6 @@ from collections import defaultdict
 
 def four_sum_ii(nums1, nums2, nums3, nums4):
     sum12_freq = defaultdict(int)
-    count = 0
-    
-    for num1 in nums1:
-        for num2 in nums2:
-            sum12= num1+num2
-            sum12_freq[sum12] +=1
-    
-    for num3 in nums3:
-        for num4 in nums4:
-            goal  = -(num3+num4)
-            count+= sum12_freq.get(goal, 0)
-    
-    return count
 
 
 
@@ -112,29 +99,29 @@ def four_sum_ii(nums1, nums2, nums3, nums4):
 #                 count += sum_map[goal]
 #     return count
 
-# def four_sum_ii(nums1, nums2, nums3, nums4):
-#     sum_map = {}
-#     res = 0
-#     len1, len2, len3, len4 = len(nums1), len(
-#         nums2), len(nums3), len(nums4)
+def four_sum_ii(nums1, nums2, nums3, nums4):
+    sum_map = {}
+    res = 0
+    len1, len2, len3, len4 = len(nums1), len(
+        nums2), len(nums3), len(nums4)
 
-#     for i in range(len1):
-#         x = nums1[i]
-#         for j in range(len2):
-#             y = nums2[j]
-#             my_sum = x+y
-#             if my_sum in sum_map:
-#                 sum_map[my_sum] += 1
-#             sum_map[my_sum] = 1
+    for i in range(len1):
+        x = nums1[i]
+        for j in range(len2):
+            y = nums2[j]
+            my_sum = x+y
+            if my_sum in sum_map:
+                sum_map[my_sum] += 1
+            sum_map[my_sum] = 1
 
-#     for i in range(len3):
-#         x = nums3[i]
-#         for j in range(len4):
-#             y = nums4[j]
-#             goal = - (x+y)
-#             if goal in sum_map:
-#                 res += sum_map[goal]
-#     return res
+    for i in range(len3):
+        x = nums3[i]
+        for j in range(len4):
+            y = nums4[j]
+            goal = - (x+y)
+            if goal in sum_map:
+                res += sum_map[goal]
+    return res
 
 
 nums1 = [1, 2]

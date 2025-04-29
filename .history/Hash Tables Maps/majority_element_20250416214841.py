@@ -22,60 +22,21 @@ from collections import Counter
 from collections import namedtuple
 
 
-# You can efficiently find the majority element using the Boyer-Moore Voting Algorithm, which runs in O(n) time and O(1) space. Here's the implementation
-
-def majority_element(nums):
-    candidate, count = None, 0
+def majority_element2(nums):
+    num_to_freq = {}
+    numslen = len(nums)
     for num in nums:
-        if count = 0:
-            candidate = num
+        if num not in num_to_freq:
+            num_to_freq[num] = 1
         else:
-            count += (1 if num==candidate else -1)
-    return candidate
+            num_to_freq[num] += 1
+            if num_to_freq[num] > numslen/2:
+                return num
 
 
-
-
-# def majority_element(nums):
-#     n = len(nums)
-#     m = {}
-#     for num in nums:
-#         if num in m:
-#             m[num] += 1
-#         else:
-#             m[num]=1
-        
-#         if m[num] > n//2:
-#                 return num
-#     return -1
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def majority_element2(nums):
-#     num_to_freq = {}
-#     numslen = len(nums)
-#     for num in nums:
-#         if num not in num_to_freq:
-#             num_to_freq[num] = 1
-#         else:
-#             num_to_freq[num] += 1
-#             if num_to_freq[num] > numslen/2:
-#                 return num
-
-
-# nums = [2, 2, 1, 1, 1, 2, 2]
-# result = majority_element2(nums)
-# print(f"2. The majority element in array {nums} is {result} ")
+nums = [2, 2, 1, 1, 1, 2, 2]
+result = majority_element2(nums)
+print(f"2. The majority element in array {nums} is {result} ")
 
 
 # def majority_element(nums):
