@@ -3,26 +3,6 @@
 Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
 
 Return the head of the merged linked list."""
-
-def merge_sorted_linked_lists(l1, l2):
-    dummy = Node(0)  # Temporary dummy node
-    current = dummy
-    
-    while l1 and l2:
-        if l1.data <= l2.data:  # Note: <= maintains stability
-            current.next = l1
-            l1 = l1.next
-        else:
-            current.next = l2
-            l2 = l2.next
-        current = current.next
-    
-    # Attach remaining elements (no need for loops)
-    current.next = l1 if l1 else l2
-    
-    return dummy.next
-
-
 # Merge sorted linked lists
 # class Node:
 #     def __init__(self, data):
@@ -105,3 +85,22 @@ def merge_sorted_linked_lists(l1, l2):
 
 
 
+def merge_sorted_linked_lists(l1, l2):
+    if not l1 and l2:
+        raise ValueError("Both lists empty!")
+    if not l1:
+        return l2
+    if not l2:
+        return l1
+    
+    temp_node = Node(0)
+    current = temp_Node
+    
+    while l1 and l2:
+        if l1 < l2:
+            current.next = l1
+            l1=l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        

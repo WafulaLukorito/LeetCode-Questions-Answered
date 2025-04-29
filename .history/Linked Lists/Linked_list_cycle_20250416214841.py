@@ -27,33 +27,17 @@ Given a linked list, determine if it has a cycle in it.
 #         return False
 
 
-# def hasCycle(head):
-#     if not head:
-#         return False
-
-#     hare = head
-#     tortoise = head
-
-#     while hare and tortoise and hare.next:
-#         hare = hare.next.next
-#         tortoise = tortoise.next
-#         if (tortoise == hare):
-#             return True
-
-#     return False
-
-
 def hasCycle(head):
     if not head:
         return False
-    tortoise= head
+
     hare = head
-    
-    while hare and hare.next:
-        tortoise = tortoise.next
+    tortoise = head
+
+    while hare and tortoise and hare.next:
         hare = hare.next.next
-        
-        if tortoise == hare:
+        tortoise = tortoise.next
+        if (tortoise == hare):
             return True
-        
+
     return False

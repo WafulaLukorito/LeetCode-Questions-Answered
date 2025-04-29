@@ -83,72 +83,10 @@ class LinkedList:
         self.tail = new_node
     
     def deleteFromHead(self):
-        if not self.head:
-            raise IndexError("List Empty!")
-        if not self.head.next:
-            self.head = self.tail = None
-            return
-        temp = self.head
-        self.head = self.head.next
-        temp.next = None  # Clean up reference
-
-    def deleteFromTail(self):
-        if not self.head:
-            raise IndexError("List Empty!")
-        if not self.head.next:
-            self.head = self.tail = None
-            return
-        current = self.head
-        while current.next.next:
-            current = current.next
-        current.next = None
-        self.tail = current
-
-    def delete(self, value):
-        if not self.head:
-            raise IndexError("List Empty!")
-        if self.head.data == value:
-            self.deleteFromHead()
-            return
-        current = self.head
-        while current.next and current.next.data != value:
-            current = current.next
-        if not current.next:
-            raise ValueError(f"{value} not in list!")
-        to_delete = current.next
-        current.next = to_delete.next
-        to_delete.next = None
-        if not current.next:
-            self.tail = current
-            
-    def deleteAt(self, pos):
-        if pos < 1 or pos > len(self):
-            raise IndexError("Position out of bounds!")
-        if pos == 1:
-            self.deleteFromHead()
-            return
-        if pos == len(self):
-            self.deleteFromTail()
-            return
-
-        current = self.head
-        for _ in range(pos - 2):  # Moves (pos - 2) steps to reach node BEFORE target
-            current = current.next
         
-        to_delete = current.next
-        current.next = to_delete.next
-        to_delete.next = None  # Clean up
 
-        if not current.next:  # Update tail if deleted the last node
-            self.tail = current
-    
-    def contains(self, value):
-        current = self.head
-        while current:
-            if current.data == value:
-                return True
-            current = current.next
-        return False
+
+
 
 
 

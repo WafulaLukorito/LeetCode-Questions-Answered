@@ -141,14 +141,7 @@ class LinkedList:
 
         if not current.next:  # Update tail if deleted the last node
             self.tail = current
-    
-    def contains(self, value):
-        current = self.head
-        while current:
-            if current.data == value:
-                return True
-            current = current.next
-        return False
+                
 
 
 
