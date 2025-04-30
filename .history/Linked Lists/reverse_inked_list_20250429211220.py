@@ -32,7 +32,7 @@ class Solution:
     #         curr = next
     #     return prev
 
-    def reverseList(self, head):
+    def reverseLinkedList(head):
         if not head:
             return None
         prev = None
