@@ -96,11 +96,6 @@ class Graph:
             raise ValueError("Vertices out of bounds!")
         self.graph[v1][v2] = 1
     
-    def deleteEdge(self, v1, v2):
-        if not self.withinBounds(v1, v2):
-            raise ValueError("Vertices out of bounds!")
-        self.graph[v1][v2] = 0
-    
     def __str__(self):
         my_str=""
         for i in range (self.numberOfNodes):

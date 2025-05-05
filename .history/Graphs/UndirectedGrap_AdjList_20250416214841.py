@@ -8,7 +8,7 @@ class Graph:
     def insertEdge(self, v1, v2):
         self.graph[v1].append(v2)
         self.graph[v2].append (v1)
-
+    
     def printGraph (self):
         for node in self.graph:
             for val in self.graph[node]:

@@ -11,7 +11,7 @@ class Graph:
     def insertEdge(self, v1, v2):
         if (self.withinBounds(v1, v2)):
             self.graph[v1][v2] = 1  #*means there is an edge from v1 to v2
-            self.graph[v2][v1] = 1 
+            self.graph[v2][v1] = 1
 
     def printGraph(self):
         for i in range(self.numberOfNodes):

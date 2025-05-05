@@ -163,7 +163,7 @@ class Graph:
         my_str = ""
         for node in self.graph:
             neighbours = ", ".join(str(val) for val in self.graph[node])
-            my_str += f"{node} => {neighbours}\n"
+            my_str += f"{node} => {neighbours}/n"
         return my_str
     
 my_graph = Graph()
@@ -172,6 +172,5 @@ my_graph.insertEdge(1,2)
 my_graph.insertEdge(2,3)
 my_graph.insertEdge(3,4)
 my_graph.insertEdge(4,1)
-my_graph.insertEdge(1,100)
 
 print (my_graph)

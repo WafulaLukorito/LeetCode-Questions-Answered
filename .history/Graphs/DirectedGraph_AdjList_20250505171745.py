@@ -172,6 +172,5 @@ my_graph.insertEdge(1,2)
 my_graph.insertEdge(2,3)
 my_graph.insertEdge(3,4)
 my_graph.insertEdge(4,1)
-my_graph.insertEdge(1,100)
 
 print (my_graph)
