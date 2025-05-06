@@ -37,7 +37,7 @@ class Graph:
         self.graph[v1].append(v2)
         
     def dfs(self, startNode):
-        st=[]
+        st = []
         visited = set()
         
         st.append(startNode)
@@ -47,10 +47,10 @@ class Graph:
             st.pop()
             
             if cur not in visited:
-                print (cur, end=" => ")
+                print (cur, end=" -> ")
                 visited.add(cur)
             
-            for node in reversed(self.graph[cur]):   # Reverse to maintain correct order
+            for node in self.graph[cur]:
                 if node not in visited:
                     st.append(node)
         

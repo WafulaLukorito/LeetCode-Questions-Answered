@@ -50,7 +50,7 @@ class Graph:
                 print (cur, end=" => ")
                 visited.add(cur)
             
-            for node in reversed(self.graph[cur]):   # Reverse to maintain correct order
+            for node in reversed(self.graph[cur]):
                 if node not in visited:
                     st.append(node)
         

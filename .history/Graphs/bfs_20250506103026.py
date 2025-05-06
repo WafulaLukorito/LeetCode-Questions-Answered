@@ -45,7 +45,6 @@ class Graph:
             for node in self.graph[cur]:
                 if node not in visited:
                     q.append(node)
-                    visited.add(node)
                     
 
 

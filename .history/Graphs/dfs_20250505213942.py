@@ -47,10 +47,10 @@ class Graph:
             st.pop()
             
             if cur not in visited:
-                print (cur, end=" => ")
+                print (cur, " => ")
                 visited.add(cur)
             
-            for node in reversed(self.graph[cur]):   # Reverse to maintain correct order
+            for node in self.graph[cur]:
                 if node not in visited:
                     st.append(node)
         
