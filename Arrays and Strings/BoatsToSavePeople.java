@@ -6,35 +6,28 @@ import java.util.Arrays;
 
 public class BoatsToSavePeople {
 
-    public static int numBoats(int[] people, int limit){
+    public static int boatsToSavePeople(int[] people, int limit) {
+        Arrays.sort(people); // O(n log n). unlike pythoon, java does not have a built in sort method for
+                             // arrays of primitive types, so we have to use the Arrays.sort() method which
+                             // uses a dual-pivot quicksort algorithm and has an average time complexity of
+                             // O(n log n).
         int left = 0;
         int right = people.length - 1;
         int boats = 0;
 
-        Arrays.sort(people);
-
-        while (left <= right){
-            if ((people[left] + people[right]) <= limit){
-              
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
                 left++;
-             
             }
-             boats++;
-             right --;
+            right--;
+            boats++;
         }
-
-
         return boats;
-
     }
 
     public static void main(String[] args) {
-        
-        int[] people = {3, 2, 2, 1};
+        int[] people = { 3, 2, 2, 1 };
         int limit = 3;
-        System.out.println("Minimum boats needed: " + numBoats(people, limit));
+        System.out.println("Minimum boats needed: " + boatsToSavePeople(people, limit));
     }
-    
 }
-
-

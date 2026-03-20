@@ -10,6 +10,30 @@
 
 # * Attempt  2
 
+
+def boats_to_save_people(people: list[int], limit: int) -> int:
+    
+    people.sort()
+    
+    left: int = 0
+    right: int = len(people) -1
+    boats: int = 0
+    
+    while left <= right:
+        if left == right:
+            boats+=1
+            break
+        if people[left] + people[right] <= limit:
+            boats+=1
+            left +=1
+            right -=1
+        else:
+            boats+=1
+            right -=1
+    
+    return boats
+
+
 # def boats_to_save_people(people, limit):
 #     left = 0
 #     boats = 0
